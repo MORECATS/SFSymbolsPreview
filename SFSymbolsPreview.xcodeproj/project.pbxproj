@@ -15,6 +15,8 @@
 		7E0C9560247E65F50029F521 /* SymbolsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C955F247E65F50029F521 /* SymbolsViewController.m */; };
 		7E0C9563247E6B520029F521 /* SymbolSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C9562247E6B520029F521 /* SymbolSearchResultsViewController.m */; };
 		7E0C9569247E6BD60029F521 /* SymbolPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C9568247E6BD60029F521 /* SymbolPreviewCell.m */; };
+		7E0C956C247E6DBA0029F521 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C956B247E6DBA0029F521 /* TextCell.m */; };
+		7E0C956F247E71570029F521 /* ReusableTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C956E247E71570029F521 /* ReusableTitleView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,10 @@
 		7E0C9562247E6B520029F521 /* SymbolSearchResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SymbolSearchResultsViewController.m; sourceTree = "<group>"; };
 		7E0C9567247E6BD60029F521 /* SymbolPreviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SymbolPreviewCell.h; sourceTree = "<group>"; };
 		7E0C9568247E6BD60029F521 /* SymbolPreviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SymbolPreviewCell.m; sourceTree = "<group>"; };
+		7E0C956A247E6DBA0029F521 /* TextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextCell.h; sourceTree = "<group>"; };
+		7E0C956B247E6DBA0029F521 /* TextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
+		7E0C956D247E71570029F521 /* ReusableTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReusableTitleView.h; sourceTree = "<group>"; };
+		7E0C956E247E71570029F521 /* ReusableTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReusableTitleView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,10 @@
 		7E0C9565247E6BB20029F521 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				7E0C956D247E71570029F521 /* ReusableTitleView.h */,
+				7E0C956E247E71570029F521 /* ReusableTitleView.m */,
+				7E0C956A247E6DBA0029F521 /* TextCell.h */,
+				7E0C956B247E6DBA0029F521 /* TextCell.m */,
 				7E0C9567247E6BD60029F521 /* SymbolPreviewCell.h */,
 				7E0C9568247E6BD60029F521 /* SymbolPreviewCell.m */,
 			);
@@ -178,9 +188,11 @@
 			files = (
 				7E0C9569247E6BD60029F521 /* SymbolPreviewCell.m in Sources */,
 				7E0C9547247E65890029F521 /* AppDelegate.m in Sources */,
+				7E0C956C247E6DBA0029F521 /* TextCell.m in Sources */,
 				7E0C9558247E658C0029F521 /* main.m in Sources */,
 				7E0C9560247E65F50029F521 /* SymbolsViewController.m in Sources */,
 				7E0C954A247E65890029F521 /* SceneDelegate.m in Sources */,
+				7E0C956F247E71570029F521 /* ReusableTitleView.m in Sources */,
 				7E0C9563247E6B520029F521 /* SymbolSearchResultsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,6 +11,9 @@
 
 @interface SymbolPreviewCell()
 
+@property( nonatomic, strong ) UIImageView                      *imageView;
+@property( nonatomic, strong ) UILabel                          *textLabel;
+
 @end
 
 @implementation SymbolPreviewCell
