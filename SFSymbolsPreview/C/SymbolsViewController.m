@@ -107,7 +107,7 @@
 {
     if( indexPath.section == 0 ) return CGSizeMake(CGRectGetWidth(collectionView.bounds) - 32.0f, 52);
         
-    return CGSizeMake((CGRectGetWidth(collectionView.bounds) - 48) / 2.0f, 64);
+    return CGSizeMake((CGRectGetWidth(collectionView.bounds) - 48) / 2.0f, 132);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -123,7 +123,7 @@
     
     SymbolPreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(SymbolPreviewCell.class)
                                                                         forIndexPath:indexPath];
-    [cell setBackgroundColor:UIColor.systemGrayColor];
+//    [cell setBackgroundColor:UIColor.systemGrayColor];
     return cell;
 }
 
