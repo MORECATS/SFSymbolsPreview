@@ -39,6 +39,8 @@
 		7EE40732247FAB5700A68520 /* SFSymbol.Keyboard.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40731247FAB5700A68520 /* SFSymbol.Keyboard.plist */; };
 		7EE40734247FAC8C00A68520 /* SFSymbol.Commerce.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40733247FAC8C00A68520 /* SFSymbol.Commerce.plist */; };
 		7EE40736247FB0FF00A68520 /* SFSymbol.Arrows.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40735247FB0FF00A68520 /* SFSymbol.Arrows.plist */; };
+		7EE40738247FBC7800A68520 /* SFSymbol.Math.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40737247FBC7800A68520 /* SFSymbol.Math.plist */; };
+		7EE4073A247FBE7200A68520 /* SFSymbol.Indices.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40739247FBE7200A68520 /* SFSymbol.Indices.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +89,8 @@
 		7EE40731247FAB5700A68520 /* SFSymbol.Keyboard.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Keyboard.plist; sourceTree = "<group>"; };
 		7EE40733247FAC8C00A68520 /* SFSymbol.Commerce.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Commerce.plist; sourceTree = "<group>"; };
 		7EE40735247FB0FF00A68520 /* SFSymbol.Arrows.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Arrows.plist; sourceTree = "<group>"; };
+		7EE40737247FBC7800A68520 /* SFSymbol.Math.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Math.plist; sourceTree = "<group>"; };
+		7EE40739247FBE7200A68520 /* SFSymbol.Indices.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Indices.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,8 @@
 				7EE40724247F884900A68520 /* SFSymbol.Health.plist */,
 				7EE40726247F890D00A68520 /* SFSymbol.Shapes.plist */,
 				7EE40735247FB0FF00A68520 /* SFSymbol.Arrows.plist */,
+				7EE40739247FBE7200A68520 /* SFSymbol.Indices.plist */,
+				7EE40737247FBC7800A68520 /* SFSymbol.Math.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 				7EE40713247F7DA100A68520 /* SFSymbol.Weather.plist in Resources */,
 				7EE4071A247F81AF00A68520 /* SFSymbol.Connectivity.plist in Resources */,
 				7EE40727247F890D00A68520 /* SFSymbol.Shapes.plist in Resources */,
+				7EE4073A247FBE7200A68520 /* SFSymbol.Indices.plist in Resources */,
 				7EE4072E247FA4C600A68520 /* SFSymbol.TextFormatting.plist in Resources */,
 				7E0C9574247F45470029F521 /* SFSymbol.All.plist in Resources */,
 				7EE40715247F806A00A68520 /* SFSymbol.Devices.plist in Resources */,
@@ -280,6 +287,7 @@
 				7EE40730247FA88800A68520 /* SFSymbol.Media.plist in Resources */,
 				7E0C9555247E658C0029F521 /* LaunchScreen.storyboard in Resources */,
 				7EE4071C247F826D00A68520 /* SFSymbol.Transportation.plist in Resources */,
+				7EE40738247FBC7800A68520 /* SFSymbol.Math.plist in Resources */,
 				7EE40732247FAB5700A68520 /* SFSymbol.Keyboard.plist in Resources */,
 				7EE40723247F87B900A68520 /* SFSymbol.Time.plist in Resources */,
 				7EE40736247FB0FF00A68520 /* SFSymbol.Arrows.plist in Resources */,

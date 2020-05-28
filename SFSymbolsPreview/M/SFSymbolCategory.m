@@ -52,7 +52,9 @@
              @"Time": @"SFSymbol.Time",
              @"Health": @"SFSymbol.Health",
              @"Shapes": @"SFSymbol.Shapes",
-             @"Arrows": @"SFSymbol.Arrows"
+             @"Arrows": @"SFSymbol.Arrows",
+             @"Indices": @"SFSymbol.Indices",
+             @"Math": @"SFSymbol.Math"
     };
     
     if( map[self.name] )
