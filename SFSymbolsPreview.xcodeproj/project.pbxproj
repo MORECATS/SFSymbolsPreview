@@ -21,6 +21,7 @@
 		7E0C9574247F45470029F521 /* SFSymbol.All.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E0C9573247F45470029F521 /* SFSymbol.All.plist */; };
 		7E0C957D247F588E0029F521 /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C957C247F588E0029F521 /* CategoriesViewController.m */; };
 		7E0C9580247F5F280029F521 /* SFSymbolCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C957F247F5F280029F521 /* SFSymbolCategory.m */; };
+		7E0C9582247F67010029F521 /* SFSymbol.Communication.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E0C9581247F67010029F521 /* SFSymbol.Communication.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		7E0C957C247F588E0029F521 /* CategoriesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
 		7E0C957E247F5F280029F521 /* SFSymbolCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFSymbolCategory.h; sourceTree = "<group>"; };
 		7E0C957F247F5F280029F521 /* SFSymbolCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFSymbolCategory.m; sourceTree = "<group>"; };
+		7E0C9581247F67010029F521 /* SFSymbol.Communication.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Communication.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				7E0C9570247F43180029F521 /* SFSymbol.h */,
 				7E0C9571247F43180029F521 /* SFSymbol.m */,
 				7E0C9573247F45470029F521 /* SFSymbol.All.plist */,
+				7E0C9581247F67010029F521 /* SFSymbol.Communication.plist */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E0C9574247F45470029F521 /* SFSymbol.All.plist in Resources */,
+				7E0C9582247F67010029F521 /* SFSymbol.Communication.plist in Resources */,
 				7E0C9555247E658C0029F521 /* LaunchScreen.storyboard in Resources */,
 				7E0C9552247E658C0029F521 /* Assets.xcassets in Resources */,
 			);

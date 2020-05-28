@@ -25,26 +25,26 @@
 {
     if( _categories == nil )
     {
-        _categories = @[ [SFSymbolCategory.alloc initWithCategoryName:@"All"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Communication"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Weather"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Object & Tools"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Devices"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Connectivity"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Transportation"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Human"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Nature"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Editing"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Text Formatting"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Media"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Keyboard"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Commerce"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Time"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Health"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Shapes"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Arrows"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Indices"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Math"] ];
+        _categories = @[ [SFSymbolCategory.alloc initWithCategoryName:@"All" imageNamed:@"square.grid.2x2.fill"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Communication" imageNamed:@"message"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Weather" imageNamed:@"cloud.sun"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Object & Tools" imageNamed:@"folder"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Devices" imageNamed:@"desktopcomputer"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Connectivity" imageNamed:@"antenna.radiowaves.left.and.right"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Transportation" imageNamed:@"car.fill"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Human" imageNamed:@"person.crop.circle"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Nature" imageNamed:@"flame"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Editing" imageNamed:@"slider.horizontal.3"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Text Formatting" imageNamed:@"textformat"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Media" imageNamed:@"playpause"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Keyboard" imageNamed:@"command"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Commerce" imageNamed:@"cart"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Time" imageNamed:@"timer"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Health" imageNamed:@"staroflife"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Shapes" imageNamed:@"square.on.circle"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Arrows" imageNamed:@"arrow.right"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Indices" imageNamed:@"a.circle"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Math" imageNamed:@"x.squareroot"] ];
     }
     return _categories;
 }
@@ -101,6 +101,8 @@
     
     [cell.textLabel setText:self.categories[indexPath.row].name];
     [cell.textLabel setFont:[UIFont systemFontOfSize:20 weight:UIFontWeightRegular]];
+    [cell.imageView setImage:[UIImage systemImageNamed:self.categories[indexPath.row].imageNamed]];
+    [cell.imageView setTintColor:cell.textLabel.textColor];
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     return cell;

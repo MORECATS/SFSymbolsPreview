@@ -29,12 +29,12 @@
     {
         [self setTitleLabel:({
             UILabel *f = UILabel.new;
-            [f setTextColor:UIColor.labelColor];
-            [f setFont:[UIFont systemFontOfSize:24 weight:UIFontWeightBold]];
+            [f setTextColor:self.tintColor];
+            [f setFont:[UIFont systemFontOfSize:12.5f weight:UIFontWeightBlack]];
             [self addSubview:f];
             [f setTranslatesAutoresizingMaskIntoConstraints:NO];
             [f.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:16].active = YES;
-            [f.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
+            [f.centerYAnchor constraintEqualToAnchor:self.centerYAnchor constant:2.0f].active = YES;
             f;
         })];
     }

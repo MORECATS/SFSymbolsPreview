@@ -17,9 +17,15 @@
 
 - (instancetype)initWithCategoryName:(NSString *)categoryName
 {
+    return [self initWithCategoryName:categoryName imageNamed:nil];
+}
+
+- (instancetype)initWithCategoryName:(NSString *)categoryName imageNamed:(NSString *)imageNamed
+{
     if( [super init] )
     {
         _name = categoryName;
+        _imageNamed = imageNamed;
         
         [self loadSymbols];
     }
@@ -30,14 +36,18 @@
 {
     if( [self.name isEqualToString:@"All"] )
     {
-        [self loadAllSymbols];
+        [self loadSymbolsWithResource:@"SFSymbol.All"];
+    }
+    else if( [self.name isEqualToString:@"Communication"] )
+    {
+        [self loadSymbolsWithResource:@"SFSymbol.Communication"];
     }
 }
 
-- (void)loadAllSymbols
+- (void)loadSymbolsWithResource:(NSString *)resource
 {
     __block NSMutableArray<SFSymbol *> *symbolsPool = @[].mutableCopy;
-    NSArray<NSString *> *symbolNames = [NSArray arrayWithContentsOfFile:[NSBundle.mainBundle pathForResource:@"SFSymbol.All" ofType:@"plist"]];
+    NSArray<NSString *> *symbolNames = [NSArray arrayWithContentsOfFile:[NSBundle.mainBundle pathForResource:resource ofType:@"plist"]];
     [symbolNames enumerateObjectsUsingBlock:^(NSString *name, NSUInteger index, BOOL *stop){
         [symbolsPool addObject:[SFSymbol symbolWithName:name]];
     }];

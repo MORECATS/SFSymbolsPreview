@@ -12,8 +12,11 @@
 @interface SFSymbolCategory : NSObject
 
 @property( nonatomic, strong, readonly ) NSString                       *name;
+@property( nonatomic, strong, readonly ) NSString                       *imageNamed;
+
 @property( nonatomic, strong, readonly ) NSArray<SFSymbol *>            *symbols;
 
 - (instancetype)initWithCategoryName:(NSString *)categoryName;
+- (instancetype)initWithCategoryName:(NSString *)categoryName imageNamed:(NSString *)imageNamed;
 
 @end

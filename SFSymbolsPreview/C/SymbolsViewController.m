@@ -43,9 +43,10 @@
     [self.view setBackgroundColor:UIColor.systemBackgroundColor];
     [self.navigationController.navigationBar setPrefersLargeTitles:YES];
     [self.navigationController.navigationItem setHidesSearchBarWhenScrolling:NO];
-    [self.navigationController.navigationItem setSearchController:[UISearchController.alloc initWithSearchResultsController:({
-        SymbolSearchResultsViewController.new;
-    })]];
+//    [self.navigationController.navigationItem setSearchController:[UISearchController.alloc initWithSearchResultsController:({
+//        SymbolSearchResultsViewController.new;
+//    })]];
+    [self.navigationController.navigationItem setSearchController:UISearchController.new];
     
     [self setCollectionView:({
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout.alloc init];
@@ -70,7 +71,6 @@
         [f.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
         [f registerClass:ReusableTitleView.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
      withReuseIdentifier:NSStringFromClass(ReusableTitleView.class)];
-        [f registerClass:TextCell.class forCellWithReuseIdentifier:NSStringFromClass(TextCell.class)];
         [f registerClass:SymbolPreviewCell.class forCellWithReuseIdentifier:NSStringFromClass(SymbolPreviewCell.class)];
         (f);
     })];
@@ -91,6 +91,24 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.category.symbols.count;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return CGSizeMake(CGRectGetWidth(collectionView.bounds), 32);
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if( kind == UICollectionElementKindSectionHeader )
+    {
+        ReusableTitleView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                     withReuseIdentifier:NSStringFromClass(ReusableTitleView.class)
+                                                                            forIndexPath:indexPath];
+        [view setTitle:[NSString stringWithFormat:@"%ld %@", self.category.symbols.count, NSLocalizedString(@"SYMBOLS", nil)]];
+        return view;
+    }
+    return nil;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
