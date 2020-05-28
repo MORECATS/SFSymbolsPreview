@@ -47,7 +47,7 @@ static NSString *const kLastOpenedCategoryNameKey = @"LastOpenedCategoryName";
     _categories = @[ [SFSymbolCategory.alloc initWithCategoryName:@"All" imageNamed:@"square.grid.2x2.fill"],
                      [SFSymbolCategory.alloc initWithCategoryName:@"Communication" imageNamed:@"message"],
                      [SFSymbolCategory.alloc initWithCategoryName:@"Weather" imageNamed:@"cloud.sun"],
-                     [SFSymbolCategory.alloc initWithCategoryName:@"Object & Tools" imageNamed:@"folder"],
+                     [SFSymbolCategory.alloc initWithCategoryName:@"Objects & Tools" imageNamed:@"folder"],
                      [SFSymbolCategory.alloc initWithCategoryName:@"Devices" imageNamed:@"desktopcomputer"],
                      [SFSymbolCategory.alloc initWithCategoryName:@"Connectivity" imageNamed:@"antenna.radiowaves.left.and.right"],
                      [SFSymbolCategory.alloc initWithCategoryName:@"Transportation" imageNamed:@"car.fill"],

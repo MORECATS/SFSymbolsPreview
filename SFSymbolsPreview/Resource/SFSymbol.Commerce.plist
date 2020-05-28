@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   SFSymbol.Commerce.plist
+   SFSymbolsPreview
+
+   Created by YICAI YANG on 2020/5/28.
+   Copyright (c) 2020 YICAI YANG. All rights reserved.
+-->
+<plist version="1.0">
+    <array>
+        <string>signature</string>
+        <string>bag</string>
+        <string>bag.fill</string>
+        <string>bag.badge.plus</string>
+        <string>bag.fill.badge.plus</string>
+        <string>bag.badge.minus</string>
+        <string>bag.fill.badge.minus</string>
+        <string>cart</string>
+        <string>cart.fill</string>
+        <string>cart.badge.plus</string>
+        <string>cart.fill.badge.plus</string>
+        <string>cart.badge.minus</string>
+        <string>cart.fill.badge.minus</string>
+        <string>creditcard</string>
+        <string>creditcard.fill</string>
+        <string>dollarsign.circle</string>
+        <string>dollarsign.circle.fill</string>
+        <string>centsign.circle</string>
+        <string>centsign.circle.fill</string>
+        <string>yensign.circle</string>
+        <string>yensign.circle.fill</string>
+        <string>sterlingsign.circle</string>
+        <string>sterlingsign.circle.fill</string>
+        <string>francsign.circle</string>
+        <string>francsign.circle.fill</string>
+        <string>florinsign.circle</string>
+        <string>florinsign.circle.fill</string>
+        <string>turkishlirasign.circle</string>
+        <string>turkishlirasign.circle.fill</string>
+        <string>rublesign.circle</string>
+        <string>rublesign.circle.fill</string>
+        <string>eurosign.circle</string>
+        <string>eurosign.circle.fill</string>
+        <string>dongsign.circle</string>
+        <string>dongsign.circle.fill</string>
+        <string>indianrupeesign.circle</string>
+        <string>indianrupeesign.circle.fill</string>
+        <string>tengesign.circle</string>
+        <string>tengesign.circle.fill</string>
+        <string>pesetasign.circle</string>
+        <string>pesetasign.circle.fill</string>
+        <string>pesosign.circle</string>
+        <string>pesosign.circle.fill</string>
+        <string>kipsign.circle</string>
+        <string>kipsign.circle.fill</string>
+        <string>wonsign.circle</string>
+        <string>wonsign.circle.fill</string>
+        <string>lirasign.circle</string>
+        <string>lirasign.circle.fill</string>
+        <string>australsign.circle</string>
+        <string>australsign.circle.fill</string>
+        <string>hryvniasign.circle</string>
+        <string>hryvniasign.circle.fill</string>
+        <string>nairasign.circle</string>
+        <string>nairasign.circle.fill</string>
+        <string>guaranisign.circle</string>
+        <string>guaranisign.circle.fill</string>
+        <string>coloncurrencysign.circle</string>
+        <string>coloncurrencysign.circle.fill</string>
+        <string>cedisign.circle</string>
+        <string>cedisign.circle.fill</string>
+        <string>cruzeirosign.circle</string>
+        <string>cruzeirosign.circle.fill</string>
+        <string>tugriksign.circle</string>
+        <string>tugriksign.circle.fill</string>
+        <string>millsign.circle</string>
+        <string>millsign.circle.fill</string>
+        <string>sheqelsign.circle</string>
+        <string>sheqelsign.circle.fill</string>
+        <string>manatsign.circle</string>
+        <string>manatsign.circle.fill</string>
+        <string>rupeesign.circle</string>
+        <string>rupeesign.circle.fill</string>
+        <string>bahtsign.circle</string>
+        <string>bahtsign.circle.fill</string>
+        <string>larisign.circle</string>
+        <string>larisign.circle.fill</string>
+        <string>bitcoinsign.circle</string>
+        <string>bitcoinsign.circle.fill</string>
+    </array>
+</plist>

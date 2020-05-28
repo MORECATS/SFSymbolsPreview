@@ -42,10 +42,17 @@
              @"Devices": @"SFSymbol.Devices",
              @"Connectivity": @"SFSymbol.Connectivity",
              @"Transportation": @"SFSymbol.Transportation",
+             @"Human": @"SFSymbol.Human",
              @"Nature": @"SFSymbol.Nature",
+             @"Editing": @"SFSymbol.Editing",
+             @"Text Formatting": @"SFSymbol.TextFormatting",
+             @"Media": @"SFSymbol.Media",
+             @"Keyboard": @"SFSymbol.Keyboard",
+             @"Commerce": @"SFSymbol.Commerce",
              @"Time": @"SFSymbol.Time",
              @"Health": @"SFSymbol.Health",
-             @"Shapes": @"SFSymbol.Shapes"
+             @"Shapes": @"SFSymbol.Shapes",
+             @"Arrows": @"SFSymbol.Arrows"
     };
     
     if( map[self.name] )
