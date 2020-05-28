@@ -8,6 +8,7 @@
 
 #import "SceneDelegate.h"
 
+#import "CategoriesViewController.h"
 #import "SymbolsViewController.h"
 
 
@@ -37,7 +38,12 @@
     {
         [self.window setWindowScene:(UIWindowScene *)scene];
     }
-    [self.window setRootViewController:[UINavigationController.alloc initWithRootViewController:SymbolsViewController.new]];
+    [self.window setRootViewController:({
+        UINavigationController *navigationC = [UINavigationController.alloc initWithRootViewController:CategoriesViewController.new];
+        [navigationC.topViewController setTitle:NSLocalizedString(@"Categories", nil)];
+        [navigationC pushViewController:[SymbolsViewController.alloc initWithCategory:@"All"] animated:NO];
+        (navigationC);
+    })];
     [self.window makeKeyAndVisible];
 }
 

@@ -18,6 +18,7 @@
 
 @interface SymbolsViewController()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
+@property( nonatomic, strong ) NSString                             *category;
 @property( nonatomic, strong ) NSArray<SFSymbol *>                  *symbols;
 
 @property( nonatomic, strong ) UICollectionView                     *collectionView;
@@ -26,13 +27,37 @@
 
 @implementation SymbolsViewController
 
+- (instancetype)initWithCategory:(NSString *)category
+{
+    if( [super init] )
+    {
+        [self setCategory:category];
+        [self setTitle:NSLocalizedString([category isEqualToString:@"All"] ? @"SF Symbols" : category, nil)];
+    }
+    return self;
+}
+
+- (NSArray<SFSymbol *> *)symbols
+{
+    if( _symbols == nil )
+    {
+        __block NSMutableArray<SFSymbol *> *symbolsPool = @[].mutableCopy;
+        NSArray<NSString *> *symbolNames = [NSArray arrayWithContentsOfFile:[NSBundle.mainBundle pathForResource:@"SFSymbol.All" ofType:@"plist"]];
+        [symbolNames enumerateObjectsUsingBlock:^(NSString *name, NSUInteger index, BOOL *stop){
+            [symbolsPool addObject:[SFSymbol symbolWithName:name]];
+        }];
+        _symbols = (NSArray *)symbolsPool;
+    }
+    return _symbols;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self setTitle:NSLocalizedString(@"SF Symbols", nil)];
     [self.view setBackgroundColor:UIColor.systemBackgroundColor];
     [self.navigationController.navigationBar setPrefersLargeTitles:YES];
+    [self.navigationController.navigationItem setHidesSearchBarWhenScrolling:NO];
     [self.navigationController.navigationItem setSearchController:[UISearchController.alloc initWithSearchResultsController:({
         SymbolSearchResultsViewController.new;
     })]];
@@ -75,57 +100,22 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return section == 0 ? 5 : self.symbols.count;
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView
-                   layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-{
-    return section == 0 ? 0 : 16;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
-    return CGSizeMake(CGRectGetWidth(collectionView.bounds), 44);
-}
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    if( kind == UICollectionElementKindSectionHeader )
-    {
-        ReusableTitleView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                                                          withReuseIdentifier:NSStringFromClass(ReusableTitleView.class)
-                                                                                 forIndexPath:indexPath];
-        [view setTitle:NSLocalizedString(indexPath.section == 0 ? @"Categories" : @"All", nil)];
-        return view;
-    }
-    return nil;
+    return self.symbols.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if( indexPath.section == 0 ) return CGSizeMake(CGRectGetWidth(collectionView.bounds) - 32.0f, 52);
-        
-    CGFloat boxWidth = (CGRectGetWidth(collectionView.bounds) - 48) / 2.0f;
-    return CGSizeMake(boxWidth, boxWidth * .7f + 44);
+    CGFloat itemWidth = (CGRectGetWidth(collectionView.bounds) - 48) / 2.0f;
+    return CGSizeMake(itemWidth, itemWidth * .7f + 48);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if( indexPath.section == 0 )
-    {
-        TextCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(TextCell.class) forIndexPath:indexPath];
-        
-        [cell.textLabel setText:NSLocalizedString(@"Weather", nil)];
-        
-        return cell;
-    }
-    
     SymbolPreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(SymbolPreviewCell.class)
                                                                         forIndexPath:indexPath];
     [cell setSymbol:self.symbols[indexPath.row]];
@@ -135,20 +125,6 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-}
-
-- (NSArray<SFSymbol *> *)symbols
-{
-    if( _symbols == nil )
-    {
-        __block NSMutableArray<SFSymbol *> *symbolsPool = @[].mutableCopy;
-        NSArray<NSString *> *symbolNames = [NSArray arrayWithContentsOfFile:[NSBundle.mainBundle pathForResource:@"SFSymbol.All" ofType:@"plist"]];
-        [symbolNames enumerateObjectsUsingBlock:^(NSString *name, NSUInteger index, BOOL *stop){
-            [symbolsPool addObject:[SFSymbol symbolWithName:name]];
-        }];
-        _symbols = (NSArray *)symbolsPool;
-    }
-    return _symbols;
 }
 
 @end

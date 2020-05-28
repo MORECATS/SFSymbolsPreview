@@ -19,6 +19,7 @@
 		7E0C956F247E71570029F521 /* ReusableTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C956E247E71570029F521 /* ReusableTitleView.m */; };
 		7E0C9572247F43180029F521 /* SFSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C9571247F43180029F521 /* SFSymbol.m */; };
 		7E0C9574247F45470029F521 /* SFSymbol.All.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E0C9573247F45470029F521 /* SFSymbol.All.plist */; };
+		7E0C957D247F588E0029F521 /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C957C247F588E0029F521 /* CategoriesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		7E0C9570247F43180029F521 /* SFSymbol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFSymbol.h; sourceTree = "<group>"; };
 		7E0C9571247F43180029F521 /* SFSymbol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFSymbol.m; sourceTree = "<group>"; };
 		7E0C9573247F45470029F521 /* SFSymbol.All.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.All.plist; sourceTree = "<group>"; };
+		7E0C957B247F588E0029F521 /* CategoriesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
+		7E0C957C247F588E0029F521 /* CategoriesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 		7E0C9564247E6BAE0029F521 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				7E0C957B247F588E0029F521 /* CategoriesViewController.h */,
+				7E0C957C247F588E0029F521 /* CategoriesViewController.m */,
 				7E0C955E247E65F50029F521 /* SymbolsViewController.h */,
 				7E0C955F247E65F50029F521 /* SymbolsViewController.m */,
 				7E0C9561247E6B520029F521 /* SymbolSearchResultsViewController.h */,
@@ -203,6 +208,7 @@
 				7E0C954A247E65890029F521 /* SceneDelegate.m in Sources */,
 				7E0C956F247E71570029F521 /* ReusableTitleView.m in Sources */,
 				7E0C9563247E6B520029F521 /* SymbolSearchResultsViewController.m in Sources */,
+				7E0C957D247F588E0029F521 /* CategoriesViewController.m in Sources */,
 				7E0C9572247F43180029F521 /* SFSymbol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
