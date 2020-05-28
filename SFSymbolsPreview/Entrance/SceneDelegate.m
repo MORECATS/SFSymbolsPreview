@@ -38,12 +38,31 @@
     {
         [self.window setWindowScene:(UIWindowScene *)scene];
     }
-    [self.window setRootViewController:({
-        UINavigationController *navigationC = [UINavigationController.alloc initWithRootViewController:CategoriesViewController.new];
-        [navigationC.topViewController setTitle:NSLocalizedString(@"Categories", nil)];
-        [navigationC pushViewController:[SymbolsViewController.alloc initWithCategory:SFSymbolDatasource.lastOpenedCategeory] animated:NO];
-        (navigationC);
-    })];
+    
+    CategoriesViewController *categoriesViewController = CategoriesViewController.new;
+    categoriesViewController.title = NSLocalizedString(@"Categories", nil);
+    
+    SymbolsViewController *symbolsViewController = [SymbolsViewController.alloc initWithCategory:SFSymbolDatasource.lastOpenedCategeory];
+    
+    if( UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad )
+    {
+        UINavigationController *masterViewController = [UINavigationController.alloc initWithRootViewController:categoriesViewController];
+        UINavigationController *detailViewController = [UINavigationController.alloc initWithRootViewController:symbolsViewController];
+        
+        [self.window setRootViewController:({
+            UISplitViewController *splitViewController = UISplitViewController.new;
+            splitViewController.viewControllers = @[ masterViewController, detailViewController ];
+            splitViewController;
+        })];
+    }
+    else
+    {
+        [self.window setRootViewController:({
+            UINavigationController *navigationC = [UINavigationController.alloc initWithRootViewController:categoriesViewController];
+            [navigationC pushViewController:symbolsViewController animated:NO];
+            (navigationC);
+        })];
+    }
     [self.window makeKeyAndVisible];
 }
 
