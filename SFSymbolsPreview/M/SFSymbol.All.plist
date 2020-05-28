@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   SFSymbol.All.plist
+   SFSymbolsPreview
+
+   Created by YICAI YANG on 2020/5/28.
+   Copyright (c) 2020 YICAI YANG. All rights reserved.
+-->
+<plist version="1.0">
+    <array>
+        <string>square.and.arrow.up</string>
+        <string>square.and.arrow.up.fill</string>
+        <string>square.and.arrow.down</string>
+        <string>square.and.arrow.down.fill</string>
+        <string>square.and.arrow.up.on.square</string>
+        <string>square.and.arrow.up.on.square.fill</string>
+        <string>square.and.arrow.down.on.square</string>
+        <string>square.and.arrow.down.on.square.fill</string>
+    </array>
+</plist>

@@ -17,6 +17,8 @@
 		7E0C9569247E6BD60029F521 /* SymbolPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C9568247E6BD60029F521 /* SymbolPreviewCell.m */; };
 		7E0C956C247E6DBA0029F521 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C956B247E6DBA0029F521 /* TextCell.m */; };
 		7E0C956F247E71570029F521 /* ReusableTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C956E247E71570029F521 /* ReusableTitleView.m */; };
+		7E0C9572247F43180029F521 /* SFSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C9571247F43180029F521 /* SFSymbol.m */; };
+		7E0C9574247F45470029F521 /* SFSymbol.All.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E0C9573247F45470029F521 /* SFSymbol.All.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,9 @@
 		7E0C956B247E6DBA0029F521 /* TextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
 		7E0C956D247E71570029F521 /* ReusableTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReusableTitleView.h; sourceTree = "<group>"; };
 		7E0C956E247E71570029F521 /* ReusableTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReusableTitleView.m; sourceTree = "<group>"; };
+		7E0C9570247F43180029F521 /* SFSymbol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFSymbol.h; sourceTree = "<group>"; };
+		7E0C9571247F43180029F521 /* SFSymbol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFSymbol.m; sourceTree = "<group>"; };
+		7E0C9573247F45470029F521 /* SFSymbol.All.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.All.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +118,9 @@
 		7E0C9566247E6BB70029F521 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				7E0C9570247F43180029F521 /* SFSymbol.h */,
+				7E0C9571247F43180029F521 /* SFSymbol.m */,
+				7E0C9573247F45470029F521 /* SFSymbol.All.plist */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -174,6 +182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E0C9574247F45470029F521 /* SFSymbol.All.plist in Resources */,
 				7E0C9555247E658C0029F521 /* LaunchScreen.storyboard in Resources */,
 				7E0C9552247E658C0029F521 /* Assets.xcassets in Resources */,
 			);
@@ -194,6 +203,7 @@
 				7E0C954A247E65890029F521 /* SceneDelegate.m in Sources */,
 				7E0C956F247E71570029F521 /* ReusableTitleView.m in Sources */,
 				7E0C9563247E6B520029F521 /* SymbolSearchResultsViewController.m in Sources */,
+				7E0C9572247F43180029F521 /* SFSymbol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

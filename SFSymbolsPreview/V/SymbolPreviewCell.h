@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SFSymbol.h"
 
 
 @interface SymbolPreviewCell : UICollectionViewCell
+
+@property( nonatomic, weak ) SFSymbol               *symbol;
 
 @end

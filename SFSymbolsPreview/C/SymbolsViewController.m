@@ -13,8 +13,12 @@
 #import "SymbolPreviewCell.h"
 #import "TextCell.h"
 
+#import "SFSymbol.h"
+
 
 @interface SymbolsViewController()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+@property( nonatomic, strong ) NSArray<SFSymbol *>                  *symbols;
 
 @property( nonatomic, strong ) UICollectionView                     *collectionView;
 
@@ -76,7 +80,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return section == 0 ? 5 : 16;
+    return section == 0 ? 5 : self.symbols.count;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView
@@ -107,7 +111,8 @@
 {
     if( indexPath.section == 0 ) return CGSizeMake(CGRectGetWidth(collectionView.bounds) - 32.0f, 52);
         
-    return CGSizeMake((CGRectGetWidth(collectionView.bounds) - 48) / 2.0f, 132);
+    CGFloat boxWidth = (CGRectGetWidth(collectionView.bounds) - 48) / 2.0f;
+    return CGSizeMake(boxWidth, boxWidth * .7f + 44);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -123,13 +128,27 @@
     
     SymbolPreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(SymbolPreviewCell.class)
                                                                         forIndexPath:indexPath];
-//    [cell setBackgroundColor:UIColor.systemGrayColor];
+    [cell setSymbol:self.symbols[indexPath.row]];
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+- (NSArray<SFSymbol *> *)symbols
+{
+    if( _symbols == nil )
+    {
+        __block NSMutableArray<SFSymbol *> *symbolsPool = @[].mutableCopy;
+        NSArray<NSString *> *symbolNames = [NSArray arrayWithContentsOfFile:[NSBundle.mainBundle pathForResource:@"SFSymbol.All" ofType:@"plist"]];
+        [symbolNames enumerateObjectsUsingBlock:^(NSString *name, NSUInteger index, BOOL *stop){
+            [symbolsPool addObject:[SFSymbol symbolWithName:name]];
+        }];
+        _symbols = (NSArray *)symbolsPool;
+    }
+    return _symbols;
 }
 
 @end
