@@ -13,8 +13,7 @@
 #import "SymbolPreviewCell.h"
 #import "TextCell.h"
 
-#import "SFSymbolCategory.h"
-
+#import "SFSymbolDatasource.h"
 
 
 @interface SymbolsViewController()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -84,6 +83,13 @@
     [super viewWillAppear:animated];
     
     [self.collectionView deselectItemAtIndexPath:self.collectionView.indexPathsForVisibleItems.firstObject animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [SFSymbolDatasource storeUserActivityLastOpenedCategory:self.category];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

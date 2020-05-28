@@ -105,10 +105,7 @@
 		7E0C9544247E65890029F521 /* SFSymbolsPreview */ = {
 			isa = PBXGroup;
 			children = (
-				7E0C9545247E65890029F521 /* AppDelegate.h */,
-				7E0C9546247E65890029F521 /* AppDelegate.m */,
-				7E0C9548247E65890029F521 /* SceneDelegate.h */,
-				7E0C9549247E65890029F521 /* SceneDelegate.m */,
+				7EE40728247F8D1400A68520 /* Entrance */,
 				7EE40716247F816200A68520 /* Resource */,
 				7E0C9566247E6BB70029F521 /* M */,
 				7E0C9565247E6BB20029F521 /* V */,
@@ -176,6 +173,17 @@
 				7EE40726247F890D00A68520 /* SFSymbol.Shapes.plist */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		7EE40728247F8D1400A68520 /* Entrance */ = {
+			isa = PBXGroup;
+			children = (
+				7E0C9545247E65890029F521 /* AppDelegate.h */,
+				7E0C9546247E65890029F521 /* AppDelegate.m */,
+				7E0C9548247E65890029F521 /* SceneDelegate.h */,
+				7E0C9549247E65890029F521 /* SceneDelegate.m */,
+			);
+			path = Entrance;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

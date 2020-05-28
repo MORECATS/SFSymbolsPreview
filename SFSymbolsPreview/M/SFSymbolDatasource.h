@@ -13,6 +13,9 @@
 
 @property( nonatomic, strong, readonly ) NSArray<SFSymbolCategory *>        *categories;
 
++ (SFSymbolCategory *)lastOpenedCategeory;
++ (void)storeUserActivityLastOpenedCategory:(SFSymbolCategory *)category;
+
 + (instancetype)datasource;
 
 @end

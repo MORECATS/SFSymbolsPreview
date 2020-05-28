@@ -9,11 +9,38 @@
 #import "SFSymbolDatasource.h"
 
 
+static NSString *const kLastOpenedCategoryNameKey = @"LastOpenedCategoryName";
+
+
 @interface SFSymbolDatasource()
 
 @end
 
 @implementation SFSymbolDatasource
+
++ (SFSymbolCategory *)lastOpenedCategeory
+{
+    NSString *name;
+    __block SFSymbolCategory *lastOpenedCategory;
+    
+    name = [NSUserDefaults.standardUserDefaults stringForKey:kLastOpenedCategoryNameKey];
+    if( name )
+    {
+        [SFSymbolDatasource.datasource.categories enumerateObjectsUsingBlock:^(SFSymbolCategory *category, NSUInteger index, BOOL *stop){
+            if( [category.name isEqualToString:name] )
+            {
+                lastOpenedCategory = category;
+                *stop = YES;
+            }
+        }];
+    }
+    return lastOpenedCategory ? : SFSymbolDatasource.datasource.categories.firstObject;
+}
+
++ (void)storeUserActivityLastOpenedCategory:(SFSymbolCategory *)category
+{
+    [NSUserDefaults.standardUserDefaults setObject:category.name forKey:kLastOpenedCategoryNameKey];
+}
 
 - (void)loadCategories
 {
