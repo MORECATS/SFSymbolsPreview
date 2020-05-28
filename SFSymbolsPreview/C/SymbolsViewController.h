@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SFSymbolCategory.h"
 
 
 @interface SymbolsViewController : UIViewController
 
-- (instancetype)initWithCategory:(NSString *)category;
+- (instancetype)initWithCategory:(SFSymbolCategory *)category;
 
 @end

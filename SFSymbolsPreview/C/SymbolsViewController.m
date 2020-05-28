@@ -18,8 +18,7 @@
 
 @interface SymbolsViewController()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property( nonatomic, strong ) NSString                             *category;
-@property( nonatomic, strong ) NSArray<SFSymbol *>                  *symbols;
+@property( nonatomic, strong ) SFSymbolCategory                     *category;
 
 @property( nonatomic, strong ) UICollectionView                     *collectionView;
 
@@ -27,28 +26,14 @@
 
 @implementation SymbolsViewController
 
-- (instancetype)initWithCategory:(NSString *)category
+- (instancetype)initWithCategory:(SFSymbolCategory *)category
 {
     if( [super init] )
     {
         [self setCategory:category];
-        [self setTitle:NSLocalizedString([category isEqualToString:@"All"] ? @"SF Symbols" : category, nil)];
+        [self setTitle:NSLocalizedString([category.name isEqualToString:@"All"] ? @"SF Symbols" : category.name, nil)];
     }
     return self;
-}
-
-- (NSArray<SFSymbol *> *)symbols
-{
-    if( _symbols == nil )
-    {
-        __block NSMutableArray<SFSymbol *> *symbolsPool = @[].mutableCopy;
-        NSArray<NSString *> *symbolNames = [NSArray arrayWithContentsOfFile:[NSBundle.mainBundle pathForResource:@"SFSymbol.All" ofType:@"plist"]];
-        [symbolNames enumerateObjectsUsingBlock:^(NSString *name, NSUInteger index, BOOL *stop){
-            [symbolsPool addObject:[SFSymbol symbolWithName:name]];
-        }];
-        _symbols = (NSArray *)symbolsPool;
-    }
-    return _symbols;
 }
 
 - (void)viewDidLoad
@@ -105,7 +90,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.symbols.count;
+    return self.category.symbols.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -118,7 +103,7 @@
 {
     SymbolPreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(SymbolPreviewCell.class)
                                                                         forIndexPath:indexPath];
-    [cell setSymbol:self.symbols[indexPath.row]];
+    [cell setSymbol:self.category.symbols[indexPath.row]];
     return cell;
 }
 

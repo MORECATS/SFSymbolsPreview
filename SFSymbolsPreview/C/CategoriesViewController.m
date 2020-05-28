@@ -8,11 +8,12 @@
 
 #import "CategoriesViewController.h"
 #import "SymbolsViewController.h"
+#import "SFSymbolCategory.h"
 
 
 @interface CategoriesViewController()<UITableViewDelegate, UITableViewDataSource>
 
-@property( nonatomic, strong ) NSArray<NSString *>                  *categories;
+@property( nonatomic, strong ) NSArray<SFSymbolCategory *>          *categories;
 
 @property( nonatomic, strong ) UITableView                          *tableView;
 
@@ -20,30 +21,30 @@
 
 @implementation CategoriesViewController
 
-- (NSArray<NSString *> *)categories
+- (NSArray<SFSymbolCategory *> *)categories
 {
     if( _categories == nil )
     {
-        _categories = @[ @"All",
-                         @"Communication",
-                         @"Weather",
-                         @"Object & Tools",
-                         @"Devices",
-                         @"Connectivity",
-                         @"Transportation",
-                         @"Human",
-                         @"Nature",
-                         @"Editing",
-                         @"Text Formatting",
-                         @"Media",
-                         @"Keyboard",
-                         @"Commerce",
-                         @"Time",
-                         @"Health",
-                         @"Shapes",
-                         @"Arrows",
-                         @"Indices",
-                         @"Math" ];
+        _categories = @[ [SFSymbolCategory.alloc initWithCategoryName:@"All"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Communication"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Weather"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Object & Tools"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Devices"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Connectivity"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Transportation"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Human"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Nature"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Editing"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Text Formatting"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Media"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Keyboard"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Commerce"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Time"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Health"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Shapes"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Arrows"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Indices"],
+                         [SFSymbolCategory.alloc initWithCategoryName:@"Math"] ];
     }
     return _categories;
 }
@@ -98,7 +99,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class)];
     
-    [cell.textLabel setText:self.categories[indexPath.row]];
+    [cell.textLabel setText:self.categories[indexPath.row].name];
     [cell.textLabel setFont:[UIFont systemFontOfSize:20 weight:UIFontWeightRegular]];
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
