@@ -75,3 +75,55 @@
 }
 
 @end
+
+
+@interface SymbolPreviewTableCell()
+
+@property( nonatomic, strong ) UIImageView                      *imageView;
+@property( nonatomic, strong ) UILabel                          *textLabel;
+
+@end
+
+@implementation SymbolPreviewTableCell
+
+- (void)setSymbol:(SFSymbol *)symbol
+{
+    _symbol = symbol;
+    
+    self.imageView.image = [UIImage systemImageNamed:symbol.name];
+    self.textLabel.text = symbol.name;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if( [super initWithFrame:frame] )
+    {
+        [self setImageView:({
+            UIImageView *f = [UIImageView.alloc initWithImage:[UIImage systemImageNamed:@"paperplane.fill"]];
+            [f setContentMode:UIViewContentModeScaleAspectFit];
+            [f setTintColor:UIColor.labelColor];
+            [self.contentView addSubview:f];
+            [f setTranslatesAutoresizingMaskIntoConstraints:NO];
+            [f.leftAnchor constraintEqualToAnchor:self.layoutMarginsGuide.leftAnchor].active = YES;
+            [f.widthAnchor constraintEqualToConstant:30.0f].active = YES;
+            [f.heightAnchor constraintEqualToConstant:30.0f].active = YES;
+            [f.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor].active = YES;
+            f;
+        })];
+        [self setTextLabel:({
+            UILabel *f = UILabel.new;
+            [f setTextAlignment:NSTextAlignmentLeft];
+            [f setFont:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium]];
+            [f setNumberOfLines:0];
+            [self.contentView addSubview:f];
+            [f setTranslatesAutoresizingMaskIntoConstraints:NO];
+            [f.leftAnchor constraintEqualToAnchor:self.imageView.rightAnchor constant:16.0f].active = YES;
+            [f.rightAnchor constraintEqualToAnchor:self.layoutMarginsGuide.rightAnchor].active = YES;
+            [f.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor].active = YES;
+            f;
+        })];
+    }
+    return self;
+}
+
+@end

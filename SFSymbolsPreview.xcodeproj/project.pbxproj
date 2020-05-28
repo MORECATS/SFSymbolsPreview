@@ -22,6 +22,16 @@
 		7E0C957D247F588E0029F521 /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C957C247F588E0029F521 /* CategoriesViewController.m */; };
 		7E0C9580247F5F280029F521 /* SFSymbolCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C957F247F5F280029F521 /* SFSymbolCategory.m */; };
 		7E0C9582247F67010029F521 /* SFSymbol.Communication.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E0C9581247F67010029F521 /* SFSymbol.Communication.plist */; };
+		7EE40713247F7DA100A68520 /* SFSymbol.Weather.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40712247F7DA100A68520 /* SFSymbol.Weather.plist */; };
+		7EE40715247F806A00A68520 /* SFSymbol.Devices.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40714247F806A00A68520 /* SFSymbol.Devices.plist */; };
+		7EE40718247F818500A68520 /* SFSymbol.Objects&Tools.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40717247F818500A68520 /* SFSymbol.Objects&Tools.plist */; };
+		7EE4071A247F81AF00A68520 /* SFSymbol.Connectivity.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40719247F81AF00A68520 /* SFSymbol.Connectivity.plist */; };
+		7EE4071C247F826D00A68520 /* SFSymbol.Transportation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE4071B247F826D00A68520 /* SFSymbol.Transportation.plist */; };
+		7EE4071E247F851800A68520 /* SFSymbol.Nature.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE4071D247F851800A68520 /* SFSymbol.Nature.plist */; };
+		7EE40721247F861600A68520 /* SFSymbolDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE40720247F861600A68520 /* SFSymbolDatasource.m */; };
+		7EE40723247F87B900A68520 /* SFSymbol.Time.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40722247F87B900A68520 /* SFSymbol.Time.plist */; };
+		7EE40725247F884900A68520 /* SFSymbol.Health.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40724247F884900A68520 /* SFSymbol.Health.plist */; };
+		7EE40727247F890D00A68520 /* SFSymbol.Shapes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40726247F890D00A68520 /* SFSymbol.Shapes.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +62,17 @@
 		7E0C957E247F5F280029F521 /* SFSymbolCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFSymbolCategory.h; sourceTree = "<group>"; };
 		7E0C957F247F5F280029F521 /* SFSymbolCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFSymbolCategory.m; sourceTree = "<group>"; };
 		7E0C9581247F67010029F521 /* SFSymbol.Communication.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Communication.plist; sourceTree = "<group>"; };
+		7EE40712247F7DA100A68520 /* SFSymbol.Weather.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Weather.plist; sourceTree = "<group>"; };
+		7EE40714247F806A00A68520 /* SFSymbol.Devices.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Devices.plist; sourceTree = "<group>"; };
+		7EE40717247F818500A68520 /* SFSymbol.Objects&Tools.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SFSymbol.Objects&Tools.plist"; sourceTree = "<group>"; };
+		7EE40719247F81AF00A68520 /* SFSymbol.Connectivity.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Connectivity.plist; sourceTree = "<group>"; };
+		7EE4071B247F826D00A68520 /* SFSymbol.Transportation.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Transportation.plist; sourceTree = "<group>"; };
+		7EE4071D247F851800A68520 /* SFSymbol.Nature.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Nature.plist; sourceTree = "<group>"; };
+		7EE4071F247F861600A68520 /* SFSymbolDatasource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFSymbolDatasource.h; sourceTree = "<group>"; };
+		7EE40720247F861600A68520 /* SFSymbolDatasource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFSymbolDatasource.m; sourceTree = "<group>"; };
+		7EE40722247F87B900A68520 /* SFSymbol.Time.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Time.plist; sourceTree = "<group>"; };
+		7EE40724247F884900A68520 /* SFSymbol.Health.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Health.plist; sourceTree = "<group>"; };
+		7EE40726247F890D00A68520 /* SFSymbol.Shapes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Shapes.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +109,7 @@
 				7E0C9546247E65890029F521 /* AppDelegate.m */,
 				7E0C9548247E65890029F521 /* SceneDelegate.h */,
 				7E0C9549247E65890029F521 /* SceneDelegate.m */,
+				7EE40716247F816200A68520 /* Resource */,
 				7E0C9566247E6BB70029F521 /* M */,
 				7E0C9565247E6BB20029F521 /* V */,
 				7E0C9564247E6BAE0029F521 /* C */,
@@ -128,14 +150,32 @@
 		7E0C9566247E6BB70029F521 /* M */ = {
 			isa = PBXGroup;
 			children = (
-				7E0C957E247F5F280029F521 /* SFSymbolCategory.h */,
-				7E0C957F247F5F280029F521 /* SFSymbolCategory.m */,
 				7E0C9570247F43180029F521 /* SFSymbol.h */,
 				7E0C9571247F43180029F521 /* SFSymbol.m */,
-				7E0C9573247F45470029F521 /* SFSymbol.All.plist */,
-				7E0C9581247F67010029F521 /* SFSymbol.Communication.plist */,
+				7E0C957E247F5F280029F521 /* SFSymbolCategory.h */,
+				7E0C957F247F5F280029F521 /* SFSymbolCategory.m */,
+				7EE4071F247F861600A68520 /* SFSymbolDatasource.h */,
+				7EE40720247F861600A68520 /* SFSymbolDatasource.m */,
 			);
 			path = M;
+			sourceTree = "<group>";
+		};
+		7EE40716247F816200A68520 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				7E0C9573247F45470029F521 /* SFSymbol.All.plist */,
+				7E0C9581247F67010029F521 /* SFSymbol.Communication.plist */,
+				7EE40712247F7DA100A68520 /* SFSymbol.Weather.plist */,
+				7EE40717247F818500A68520 /* SFSymbol.Objects&Tools.plist */,
+				7EE40714247F806A00A68520 /* SFSymbol.Devices.plist */,
+				7EE40719247F81AF00A68520 /* SFSymbol.Connectivity.plist */,
+				7EE4071B247F826D00A68520 /* SFSymbol.Transportation.plist */,
+				7EE4071D247F851800A68520 /* SFSymbol.Nature.plist */,
+				7EE40722247F87B900A68520 /* SFSymbol.Time.plist */,
+				7EE40724247F884900A68520 /* SFSymbol.Health.plist */,
+				7EE40726247F890D00A68520 /* SFSymbol.Shapes.plist */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,9 +235,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EE40725247F884900A68520 /* SFSymbol.Health.plist in Resources */,
+				7EE40713247F7DA100A68520 /* SFSymbol.Weather.plist in Resources */,
+				7EE4071A247F81AF00A68520 /* SFSymbol.Connectivity.plist in Resources */,
+				7EE40727247F890D00A68520 /* SFSymbol.Shapes.plist in Resources */,
 				7E0C9574247F45470029F521 /* SFSymbol.All.plist in Resources */,
+				7EE40715247F806A00A68520 /* SFSymbol.Devices.plist in Resources */,
+				7EE40718247F818500A68520 /* SFSymbol.Objects&Tools.plist in Resources */,
+				7EE4071E247F851800A68520 /* SFSymbol.Nature.plist in Resources */,
 				7E0C9582247F67010029F521 /* SFSymbol.Communication.plist in Resources */,
 				7E0C9555247E658C0029F521 /* LaunchScreen.storyboard in Resources */,
+				7EE4071C247F826D00A68520 /* SFSymbol.Transportation.plist in Resources */,
+				7EE40723247F87B900A68520 /* SFSymbol.Time.plist in Resources */,
 				7E0C9552247E658C0029F521 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +263,7 @@
 				7E0C9547247E65890029F521 /* AppDelegate.m in Sources */,
 				7E0C956C247E6DBA0029F521 /* TextCell.m in Sources */,
 				7E0C9558247E658C0029F521 /* main.m in Sources */,
+				7EE40721247F861600A68520 /* SFSymbolDatasource.m in Sources */,
 				7E0C9560247E65F50029F521 /* SymbolsViewController.m in Sources */,
 				7E0C954A247E65890029F521 /* SceneDelegate.m in Sources */,
 				7E0C956F247E71570029F521 /* ReusableTitleView.m in Sources */,

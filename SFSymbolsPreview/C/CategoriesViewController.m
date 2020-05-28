@@ -8,12 +8,24 @@
 
 #import "CategoriesViewController.h"
 #import "SymbolsViewController.h"
-#import "SFSymbolCategory.h"
+#import "SFSymbolDatasource.h"
+
+
+@interface CategoryCell : UITableViewCell
+
+@end
+
+@implementation CategoryCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    return [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
+}
+
+@end
 
 
 @interface CategoriesViewController()<UITableViewDelegate, UITableViewDataSource>
-
-@property( nonatomic, strong ) NSArray<SFSymbolCategory *>          *categories;
 
 @property( nonatomic, strong ) UITableView                          *tableView;
 
@@ -21,32 +33,9 @@
 
 @implementation CategoriesViewController
 
-- (NSArray<SFSymbolCategory *> *)categories
+- (SFSymbolCategory *)categoryForIndexPath:(NSIndexPath *)indexPath
 {
-    if( _categories == nil )
-    {
-        _categories = @[ [SFSymbolCategory.alloc initWithCategoryName:@"All" imageNamed:@"square.grid.2x2.fill"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Communication" imageNamed:@"message"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Weather" imageNamed:@"cloud.sun"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Object & Tools" imageNamed:@"folder"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Devices" imageNamed:@"desktopcomputer"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Connectivity" imageNamed:@"antenna.radiowaves.left.and.right"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Transportation" imageNamed:@"car.fill"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Human" imageNamed:@"person.crop.circle"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Nature" imageNamed:@"flame"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Editing" imageNamed:@"slider.horizontal.3"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Text Formatting" imageNamed:@"textformat"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Media" imageNamed:@"playpause"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Keyboard" imageNamed:@"command"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Commerce" imageNamed:@"cart"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Time" imageNamed:@"timer"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Health" imageNamed:@"staroflife"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Shapes" imageNamed:@"square.on.circle"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Arrows" imageNamed:@"arrow.right"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Indices" imageNamed:@"a.circle"],
-                         [SFSymbolCategory.alloc initWithCategoryName:@"Math" imageNamed:@"x.squareroot"] ];
-    }
-    return _categories;
+    return SFSymbolDatasource.datasource.categories[indexPath.row];
 }
 
 - (void)viewDidLoad
@@ -68,7 +57,7 @@
         [f.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
         [f.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
         [f.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
-        [f registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
+        [f registerClass:CategoryCell.class forCellReuseIdentifier:NSStringFromClass(CategoryCell.class)];
         f;
     })];
 }
@@ -87,7 +76,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.categories.count;
+    return SFSymbolDatasource.datasource.categories.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,11 +86,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class)];
+    CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(CategoryCell.class)];
     
-    [cell.textLabel setText:self.categories[indexPath.row].name];
+    SFSymbolCategory *category = [self categoryForIndexPath:indexPath];
+    
+    [cell.textLabel setText:category.name];
     [cell.textLabel setFont:[UIFont systemFontOfSize:20 weight:UIFontWeightRegular]];
-    [cell.imageView setImage:[UIImage systemImageNamed:self.categories[indexPath.row].imageNamed]];
+    [cell.detailTextLabel setText:@(category.symbols.count).stringValue];
+    [cell.imageView setImage:[UIImage systemImageNamed:category.imageNamed]];
     [cell.imageView setTintColor:cell.textLabel.textColor];
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
@@ -110,7 +102,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.navigationController pushViewController:[SymbolsViewController.alloc initWithCategory:self.categories[indexPath.row]] animated:YES];
+    [self.navigationController pushViewController:[SymbolsViewController.alloc initWithCategory:[self categoryForIndexPath:indexPath]] animated:YES];
 }
 
 @end

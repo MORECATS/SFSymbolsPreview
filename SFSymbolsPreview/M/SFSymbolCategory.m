@@ -34,13 +34,23 @@
 
 - (void)loadSymbols
 {
-    if( [self.name isEqualToString:@"All"] )
+    static NSDictionary<NSString *, NSString *> *map;
+    map = @{ @"All": @"SFSymbol.All",
+             @"Communication": @"SFSymbol.Communication",
+             @"Weather": @"SFSymbol.Weather",
+             @"Objects & Tools": @"SFSymbol.Objects&Tools",
+             @"Devices": @"SFSymbol.Devices",
+             @"Connectivity": @"SFSymbol.Connectivity",
+             @"Transportation": @"SFSymbol.Transportation",
+             @"Nature": @"SFSymbol.Nature",
+             @"Time": @"SFSymbol.Time",
+             @"Health": @"SFSymbol.Health",
+             @"Shapes": @"SFSymbol.Shapes"
+    };
+    
+    if( map[self.name] )
     {
-        [self loadSymbolsWithResource:@"SFSymbol.All"];
-    }
-    else if( [self.name isEqualToString:@"Communication"] )
-    {
-        [self loadSymbolsWithResource:@"SFSymbol.Communication"];
+        [self loadSymbolsWithResource:map[self.name]];
     }
 }
 

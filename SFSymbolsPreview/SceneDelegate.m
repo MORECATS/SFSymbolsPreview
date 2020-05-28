@@ -10,6 +10,7 @@
 
 #import "CategoriesViewController.h"
 #import "SymbolsViewController.h"
+#import "SFSymbolDatasource.h"
 
 
 @interface SceneDelegate()
@@ -41,7 +42,7 @@
     [self.window setRootViewController:({
         UINavigationController *navigationC = [UINavigationController.alloc initWithRootViewController:CategoriesViewController.new];
         [navigationC.topViewController setTitle:NSLocalizedString(@"Categories", nil)];
-        [navigationC pushViewController:[SymbolsViewController.alloc initWithCategory:[SFSymbolCategory.alloc initWithCategoryName:@"All"]] animated:NO];
+        [navigationC pushViewController:[SymbolsViewController.alloc initWithCategory:SFSymbolDatasource.datasource.categories.firstObject] animated:NO];
         (navigationC);
     })];
     [self.window makeKeyAndVisible];
