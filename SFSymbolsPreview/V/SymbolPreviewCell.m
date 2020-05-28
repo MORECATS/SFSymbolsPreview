@@ -28,6 +28,22 @@
     self.textLabel.text = symbol.name;
 }
 
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    
+    [self.imageWrapperView setBackgroundColor:selected ? self.tintColor : UIColor.clearColor];
+    [self.imageView setTintColor:selected ? UIColor.whiteColor : UIColor.labelColor];
+}
+
+- (void)setHighlighted:(BOOL)highlighted
+{
+    [super setHighlighted:highlighted];
+    
+    [self.imageWrapperView setBackgroundColor:highlighted ? self.tintColor : UIColor.clearColor];
+    [self.imageView setTintColor:highlighted ? UIColor.whiteColor : UIColor.labelColor];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if( [super initWithFrame:frame] )
@@ -41,8 +57,8 @@
             [f setTranslatesAutoresizingMaskIntoConstraints:NO];
             [f.topAnchor constraintEqualToAnchor:self.contentView.topAnchor].active = YES;
             [f.widthAnchor constraintEqualToAnchor:self.contentView.widthAnchor].active = YES;
+            [f.heightAnchor constraintEqualToAnchor:self.contentView.widthAnchor multiplier:.68f].active = YES;
             [f.centerXAnchor constraintEqualToAnchor:self.contentView.centerXAnchor].active = YES;
-            [f.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor constant:-44.0f].active = YES;
             f;
         })];
         
@@ -61,7 +77,7 @@
         [self setTextLabel:({
             UILabel *f = UILabel.new;
             [f setTextAlignment:NSTextAlignmentCenter];
-            [f setFont:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium]];
+            [f setFont:[UIFont systemFontOfSize:15 weight:UIFontWeightRegular]];
             [f setNumberOfLines:0];
             [self.contentView addSubview:f];
             [f setTranslatesAutoresizingMaskIntoConstraints:NO];

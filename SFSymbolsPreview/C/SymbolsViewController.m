@@ -64,7 +64,7 @@
         [f setAlwaysBounceHorizontal:NO];
         [f setShowsVerticalScrollIndicator:YES];
         [f setShowsHorizontalScrollIndicator:NO];
-        [f setAllowsMultipleSelection:YES];
+        [f setAllowsMultipleSelection:NO];
         [f setBackgroundColor:UIColor.clearColor];
         [f setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.view addSubview:f];
@@ -108,8 +108,9 @@
     
     if( self.symbolPreviewingStyle == SymbolpreviewingColletionStyle )
     {
-        itemWidth = (CGRectGetWidth(collectionView.bounds) - 48) / 2.0f;
-        return CGSizeMake(itemWidth, itemWidth * .7f + 48);
+//        itemWidth = (CGRectGetWidth(collectionView.bounds) - 48) / 2.0f;
+        itemWidth = (CGRectGetWidth(collectionView.bounds) - 16 * 5) / 4.0f;
+        return CGSizeMake(itemWidth, itemWidth * .68f + 64);
     }
     else
     {

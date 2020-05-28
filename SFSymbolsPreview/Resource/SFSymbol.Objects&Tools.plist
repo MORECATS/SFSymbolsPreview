@@ -163,6 +163,8 @@
         <string>lock.rotation.open</string>
         <string>pin</string>
         <string>pin.fill</string>
+        <string>pin.circle</string>
+        <string>pin.circle.fill</string>
         <string>pin.slash</string>
         <string>pin.slash.fill</string>
         <string>mappin</string>
