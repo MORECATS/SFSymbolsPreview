@@ -16,6 +16,27 @@
 #import "SFSymbolDatasource.h"
 
 
+@interface UIImage( SharingImageExtension )
+
+@end
+
+@implementation UIImage( SharingImageExtension )
+
+- (UIImage *)toSize:(CGSize)size
+{
+    UIImage *image = nil;
+    {
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+        [self drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        (image = UIGraphicsGetImageFromCurrentImageContext());
+        UIGraphicsEndImageContext();
+    }
+    return image;
+}
+
+@end
+
+
 @interface SymbolsViewController()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property( nonatomic, strong ) SFSymbolCategory                     *category;
@@ -139,7 +160,30 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *imageNamed = self.category.symbols[indexPath.item].name;
     
+    UIImage *image;
+    {
+        CGRect imageRect = CGRectMake(0, 0, 512, 512);
+        CGFloat scale = 3.0f;
+        
+        image = [UIImage systemImageNamed:imageNamed];
+        image = [image toSize:CGSizeMake(imageRect.size.width, imageRect.size.width * image.size.height / image.size.width)];
+        
+        UIGraphicsBeginImageContextWithOptions(imageRect.size, NO, scale);
+        [image drawAtPoint:CGPointMake(CGRectGetMidX(imageRect) - image.size.width / 2.0f, CGRectGetMidY(imageRect) - image.size.height / 2.0f)];
+        (image = UIGraphicsGetImageFromCurrentImageContext());
+        UIGraphicsEndImageContext();
+    }
+    
+    UIActivityViewController *activityViewController = [UIActivityViewController.alloc initWithActivityItems:@[ imageNamed, image ]
+                                                                                       applicationActivities:nil];
+    if( UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad )
+    {
+        activityViewController.popoverPresentationController.sourceView = [collectionView cellForItemAtIndexPath:indexPath];
+        activityViewController.popoverPresentationController.sourceRect = activityViewController.popoverPresentationController.sourceView.bounds;
+    }
+    [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 @end

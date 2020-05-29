@@ -102,8 +102,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.splitViewController showDetailViewController:[SymbolsViewController.alloc initWithCategory:[self categoryForIndexPath:indexPath]] sender:self];
-//    [self.navigationController pushViewController:[SymbolsViewController.alloc initWithCategory:[self categoryForIndexPath:indexPath]] animated:YES];
+//    [self.splitViewController showDetailViewController:[SymbolsViewController.alloc initWithCategory:[self categoryForIndexPath:indexPath]] sender:self];
+    [self.navigationController pushViewController:[SymbolsViewController.alloc initWithCategory:[self categoryForIndexPath:indexPath]] animated:YES];
 }
 
 @end
