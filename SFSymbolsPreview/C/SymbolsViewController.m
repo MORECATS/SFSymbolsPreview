@@ -78,7 +78,6 @@
     
     [self setCollectionView:({
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout.alloc init];
-        [layout setMinimumLineSpacing:16];
         [layout setMinimumInteritemSpacing:16];
         [layout setSectionInset:UIEdgeInsetsMake(16, 16, 16, 16)];
         
@@ -135,6 +134,11 @@
     return self.category.symbols.count;
 }
 
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return self.numberOfItemInColumn == 1 ? 0 : 16;
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     return CGSizeMake(CGRectGetWidth(collectionView.bounds), 64);
@@ -166,7 +170,7 @@
     else
     {
         itemWidth = CGRectGetWidth(collectionView.bounds) - 32.0f;
-        return CGSizeMake(itemWidth, 48);
+        return CGSizeMake(itemWidth, 52);
     }
 }
 

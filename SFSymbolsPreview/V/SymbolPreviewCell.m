@@ -128,15 +128,15 @@
             [self.contentView addSubview:f];
             [f setTranslatesAutoresizingMaskIntoConstraints:NO];
             [f.leftAnchor constraintEqualToAnchor:self.layoutMarginsGuide.leftAnchor].active = YES;
-            [f.widthAnchor constraintEqualToConstant:30.0f].active = YES;
-            [f.heightAnchor constraintEqualToConstant:30.0f].active = YES;
+            [f.widthAnchor constraintEqualToConstant:26.0f].active = YES;
+            [f.heightAnchor constraintEqualToConstant:26.0f].active = YES;
             [f.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor].active = YES;
             f;
         })];
         [self setTextLabel:({
             UILabel *f = UILabel.new;
             [f setTextAlignment:NSTextAlignmentLeft];
-            [f setFont:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium]];
+            [f setFont:[UIFont systemFontOfSize:17 weight:UIFontWeightRegular]];
             [f setNumberOfLines:0];
             [self.contentView addSubview:f];
             [f setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -145,6 +145,16 @@
             [f.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor].active = YES;
             f;
         })];
+        
+        UIView *stroke = UIView.new;
+        [stroke setUserInteractionEnabled:NO];
+        [stroke setBackgroundColor:UIColor.separatorColor];
+        [self.contentView addSubview:stroke];
+        [stroke setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [stroke.widthAnchor constraintEqualToAnchor:self.contentView.widthAnchor].active = YES;
+        [stroke.heightAnchor constraintEqualToConstant:1.0f / UIScreen.mainScreen.scale].active = YES;
+        [stroke.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor].active = YES;
+        [stroke.centerXAnchor constraintEqualToAnchor:self.contentView.centerXAnchor].active = YES;
     }
     return self;
 }
