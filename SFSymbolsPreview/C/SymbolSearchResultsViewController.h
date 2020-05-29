@@ -6,9 +6,9 @@
 //  Copyright © 2020 YICAI YANG. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SymbolsViewController.h"
 
 
-@interface SymbolSearchResultsViewController : UIViewController
+@interface SymbolSearchResultsViewController : SymbolsViewController<UISearchResultsUpdating>
 
 @end

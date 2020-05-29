@@ -32,6 +32,16 @@
     return self;
 }
 
+- (instancetype)initWithSearchResultsCategoryWithSymbols:(NSArray<SFSymbol *> *)symbols
+{
+    if( [super init] )
+    {
+        _name = NSLocalizedString(@"Search Results", nil);
+        _symbols = symbols;
+    }
+    return self;
+}
+
 - (void)loadSymbols
 {
     static NSDictionary<NSString *, NSString *> *map;

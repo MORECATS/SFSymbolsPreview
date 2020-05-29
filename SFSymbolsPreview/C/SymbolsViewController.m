@@ -10,15 +10,10 @@
 #import "SymbolsViewController.h"
 
 #import "ReusableTitleView.h"
-#import "SymbolPreviewCell.h"
 #import "TextCell.h"
 
 #import "SFSymbolDatasource.h"
 
-
-@interface UIImage( SharingImageExtension )
-
-@end
 
 @implementation UIImage( SharingImageExtension )
 
@@ -37,12 +32,10 @@
 @end
 
 
-@interface SymbolsViewController()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-
-@property( nonatomic, strong ) SFSymbolCategory                     *category;
-
-@property( nonatomic, assign ) SymbolPreviewingStyle                symbolPreviewingStyle;
-@property( nonatomic, strong ) UICollectionView                     *collectionView;
+@interface SymbolsViewController()
+{
+    dispatch_once_t _onceToken;
+}
 
 @end
 
@@ -66,11 +59,15 @@
     
     [self.view setBackgroundColor:UIColor.systemBackgroundColor];
     [self.navigationController.navigationBar setPrefersLargeTitles:YES];
-    [self.navigationController.navigationItem setHidesSearchBarWhenScrolling:NO];
-//    [self.navigationController.navigationItem setSearchController:[UISearchController.alloc initWithSearchResultsController:({
-//        SymbolSearchResultsViewController.new;
-//    })]];
-    [self.navigationController.navigationItem setSearchController:UISearchController.new];
+    
+    [self.navigationItem setSearchController:({
+        SymbolSearchResultsViewController *searchResultsVC = [SymbolSearchResultsViewController.alloc initWithCategory:self.category];
+        UISearchController *searchController = [UISearchController.alloc initWithSearchResultsController:searchResultsVC];
+        searchController.searchResultsUpdater = searchResultsVC;
+        searchController.searchBar.placeholder = NSLocalizedString(@"Search", nil);
+        searchController;
+    })];
+    [self.navigationItem setHidesSearchBarWhenScrolling:NO];
     
     [self setCollectionView:({
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout.alloc init];
@@ -110,7 +107,12 @@
 {
     [super viewDidAppear:animated];
     
-    [SFSymbolDatasource storeUserActivityLastOpenedCategory:self.category];
+    if( [self isKindOfClass:SymbolsViewController.class] )
+    {
+        dispatch_once(&_onceToken, ^{
+            [SFSymbolDatasource storeUserActivityLastOpenedCategory:self.category];
+        });
+    }
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

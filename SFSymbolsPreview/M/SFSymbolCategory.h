@@ -18,5 +18,6 @@
 
 - (instancetype)initWithCategoryName:(NSString *)categoryName;
 - (instancetype)initWithCategoryName:(NSString *)categoryName imageNamed:(NSString *)imageNamed;
+- (instancetype)initWithSearchResultsCategoryWithSymbols:(NSArray<SFSymbol *> *)symbols;
 
 @end

@@ -17,14 +17,20 @@
 
 + (instancetype)symbolWithName:(NSString *)name
 {
-    return [SFSymbol.alloc initWithName:name];
+    return [SFSymbol.alloc initWithName:name attributedName:nil];
 }
 
-- (instancetype)initWithName:(NSString *)name
++ (instancetype)symbolWithAttributedName:(NSAttributedString *)attributedName
+{
+    return [SFSymbol.alloc initWithName:attributedName.string attributedName:attributedName];
+}
+
+- (instancetype)initWithName:(NSString *)name attributedName:(NSAttributedString *)attributedName
 {
     if( [super init] )
     {
-        [self setName:name];
+        _name = name;
+        _attributedName = attributedName;
     }
     return self;
 }

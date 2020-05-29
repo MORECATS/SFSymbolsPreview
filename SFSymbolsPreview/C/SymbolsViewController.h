@@ -8,9 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "SFSymbolCategory.h"
+#import "SymbolPreviewCell.h"
 
 
-@interface SymbolsViewController : UIViewController
+@interface UIImage( SharingImageExtension )
+
+- (UIImage *)toSize:(CGSize)size;
+
+@end
+
+
+@interface SymbolsViewController : UIViewController<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+@property( nonatomic, assign ) SymbolPreviewingStyle                symbolPreviewingStyle;
+
+@property( nonatomic, strong ) SFSymbolCategory                     *category;
+
+@property( nonatomic, strong ) UICollectionView                     *collectionView;
 
 - (instancetype)initWithCategory:(SFSymbolCategory *)category;
 

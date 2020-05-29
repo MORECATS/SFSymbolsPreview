@@ -11,8 +11,10 @@
 
 @interface SFSymbol : NSObject
 
-@property( nonatomic, copy ) NSString                       *name;
+@property( nonatomic, copy, readonly ) NSString                       *name;
+@property( nonatomic, copy, readonly ) NSAttributedString             *attributedName;
 
 + (instancetype)symbolWithName:(NSString *)name;
++ (instancetype)symbolWithAttributedName:(NSAttributedString *)attributedName;
 
 @end

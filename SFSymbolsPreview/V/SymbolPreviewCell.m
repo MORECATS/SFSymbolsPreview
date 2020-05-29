@@ -25,7 +25,14 @@
     _symbol = symbol;
     
     self.imageView.image = [UIImage systemImageNamed:symbol.name];
-    self.textLabel.text = symbol.name;
+    if( symbol.attributedName )
+    {
+        self.textLabel.attributedText = symbol.attributedName;
+    }
+    else
+    {
+        self.textLabel.text = symbol.name;
+    }
 }
 
 - (void)setSelected:(BOOL)selected
