@@ -15,6 +15,9 @@ void storeUserActivityLastOpenedCategory(SFSymbolCategory *category);
 NSUInteger numberOfItemsInColumn(void);
 void storeUserActivityNumberOfItemsInColumn(NSUInteger numberOfItems);
 
+UIImageSymbolWeight preferredImageSymbolWeight(void);
+void storeUserActivityPreferredImageSymbolWeight(UIImageSymbolWeight weight);
+
 
 @interface SFSymbolDatasource : NSObject
 

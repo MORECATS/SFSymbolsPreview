@@ -6,6 +6,7 @@
 //  Copyright © 2020 YICAI YANG. All rights reserved.
 //
 
+#import "SFSymbolDatasource.h"
 #import "SFSymbol.h"
 
 
@@ -23,6 +24,11 @@
 + (instancetype)symbolWithAttributedName:(NSAttributedString *)attributedName
 {
     return [SFSymbol.alloc initWithName:attributedName.string attributedName:attributedName];
+}
+
+- (UIImage *)image
+{
+    return [UIImage systemImageNamed:self.name withConfiguration:[UIImageSymbolConfiguration configurationWithWeight:preferredImageSymbolWeight()]];
 }
 
 - (instancetype)initWithName:(NSString *)name attributedName:(NSAttributedString *)attributedName

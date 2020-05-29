@@ -6,13 +6,14 @@
 //  Copyright © 2020 YICAI YANG. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 
 @interface SFSymbol : NSObject
 
 @property( nonatomic, copy, readonly ) NSString                       *name;
 @property( nonatomic, copy, readonly ) NSAttributedString             *attributedName;
+@property( nonatomic, strong, readonly ) UIImage                      *image;
 
 + (instancetype)symbolWithName:(NSString *)name;
 + (instancetype)symbolWithAttributedName:(NSAttributedString *)attributedName;

@@ -70,6 +70,12 @@
     })];
     [self.navigationItem setHidesSearchBarWhenScrolling:NO];
     
+    [self.navigationItem setRightBarButtonItem:[UIBarButtonItem.alloc initWithTitle:@"Regular"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(changePreferredImageSymbolWeight)]];
+    [self updateRightBarButtonItemTitle];
+    
     [self setCollectionView:({
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout.alloc init];
         [layout setMinimumLineSpacing:16];
@@ -208,6 +214,72 @@
         activityViewController.popoverPresentationController.sourceRect = activityViewController.popoverPresentationController.sourceView.bounds;
     }
     [self presentViewController:activityViewController animated:YES completion:nil];
+}
+
+- (void)changePreferredImageSymbolWeight
+{
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:nil
+                                                                    message:nil
+                                                             preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertC addAction:[UIAlertAction actionWithTitle:@"Ultralight" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self updatePreferredImageSymbolWeight:UIImageSymbolWeightUltraLight];
+    }]];
+    [alertC addAction:[UIAlertAction actionWithTitle:@"Thin" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self updatePreferredImageSymbolWeight:UIImageSymbolWeightThin];
+    }]];
+    [alertC addAction:[UIAlertAction actionWithTitle:@"Light" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self updatePreferredImageSymbolWeight:UIImageSymbolWeightLight];
+    }]];
+    [alertC addAction:[UIAlertAction actionWithTitle:@"Regular" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self updatePreferredImageSymbolWeight:UIImageSymbolWeightRegular];
+    }]];
+    [alertC addAction:[UIAlertAction actionWithTitle:@"Medium" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self updatePreferredImageSymbolWeight:UIImageSymbolWeightMedium];
+    }]];
+    [alertC addAction:[UIAlertAction actionWithTitle:@"Semibold" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self updatePreferredImageSymbolWeight:UIImageSymbolWeightSemibold];
+    }]];
+    [alertC addAction:[UIAlertAction actionWithTitle:@"Bold" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self updatePreferredImageSymbolWeight:UIImageSymbolWeightBold];
+    }]];
+    [alertC addAction:[UIAlertAction actionWithTitle:@"Heavy" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self updatePreferredImageSymbolWeight:UIImageSymbolWeightHeavy];
+    }]];
+    [alertC addAction:[UIAlertAction actionWithTitle:@"Black" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self updatePreferredImageSymbolWeight:UIImageSymbolWeightBlack];
+    }]];
+    [alertC addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil]];
+    if( UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad )
+    {
+        alertC.popoverPresentationController.barButtonItem = self.navigationItem.rightBarButtonItem;
+    }
+    [self presentViewController:alertC animated:YES completion:nil];
+}
+
+- (void)updateRightBarButtonItemTitle
+{
+    switch( preferredImageSymbolWeight() )
+    {
+        case UIImageSymbolWeightUltraLight: self.navigationItem.rightBarButtonItem.title = @"Ultralight"; break;
+        case UIImageSymbolWeightThin: self.navigationItem.rightBarButtonItem.title = @"Thin"; break;
+        case UIImageSymbolWeightLight: self.navigationItem.rightBarButtonItem.title = @"Light"; break;
+        case UIImageSymbolWeightRegular: self.navigationItem.rightBarButtonItem.title = @"Regular"; break;
+        case UIImageSymbolWeightMedium: self.navigationItem.rightBarButtonItem.title = @"Medium"; break;
+        case UIImageSymbolWeightSemibold: self.navigationItem.rightBarButtonItem.title = @"Semibold"; break;
+        case UIImageSymbolWeightBold: self.navigationItem.rightBarButtonItem.title = @"Bold"; break;
+        case UIImageSymbolWeightHeavy: self.navigationItem.rightBarButtonItem.title = @"Heavy"; break;
+        case UIImageSymbolWeightBlack: self.navigationItem.rightBarButtonItem.title = @"Black"; break;
+        default: self.navigationItem.rightBarButtonItem.title = @"Regular"; break;
+    }
+}
+
+- (void)updatePreferredImageSymbolWeight:(UIImageSymbolWeight)weight
+{
+    storeUserActivityPreferredImageSymbolWeight(weight);
+    [self.collectionView performBatchUpdates:^{
+        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    } completion:nil];
+    [self updateRightBarButtonItemTitle];
 }
 
 - (void)changeNumberOfItemsInColumn:(UISegmentedControl *)segmentedControl

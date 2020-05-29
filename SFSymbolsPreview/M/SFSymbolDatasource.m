@@ -47,6 +47,18 @@ void storeUserActivityNumberOfItemsInColumn(NSUInteger numberOfItems)
     [NSUserDefaults.standardUserDefaults setInteger:numberOfItems forKey:kNumberOfItemsInColumnKey];
 }
 
+static NSString *const kPreferredImageSymbolWeightKey = @"PreferredImageSymbolWeight";
+UIImageSymbolWeight preferredImageSymbolWeight(void)
+{
+    NSUInteger weight = [NSUserDefaults.standardUserDefaults integerForKey:kPreferredImageSymbolWeightKey];
+    return (weight >= UIImageSymbolWeightUltraLight && weight <= UIImageSymbolWeightBlack) ? weight : UIImageSymbolWeightRegular;
+}
+
+void storeUserActivityPreferredImageSymbolWeight(UIImageSymbolWeight weight)
+{
+    [NSUserDefaults.standardUserDefaults setInteger:weight forKey:kPreferredImageSymbolWeightKey];
+}
+
 
 @interface SFSymbolDatasource()
 

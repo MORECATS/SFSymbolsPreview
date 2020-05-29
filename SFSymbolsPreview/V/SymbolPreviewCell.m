@@ -24,7 +24,7 @@
 {
     _symbol = symbol;
     
-    self.imageView.image = [UIImage systemImageNamed:symbol.name];
+    self.imageView.image = symbol.image;
     if( symbol.attributedName )
     {
         self.textLabel.attributedText = symbol.attributedName;
@@ -113,7 +113,7 @@
 {
     _symbol = symbol;
     
-    self.imageView.image = [UIImage systemImageNamed:symbol.name];
+    self.imageView.image = symbol.image;
     self.textLabel.text = symbol.name;
 }
 
