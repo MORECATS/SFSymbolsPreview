@@ -11,6 +11,13 @@
 
 @interface ReusableTitleView : UICollectionReusableView
 
-@property( nonatomic, strong ) NSString         *title;
+@property( nonatomic, strong ) NSString                 *title;
+
+@end
+
+
+@interface ReusableSegmentedControlView : UICollectionReusableView
+
+@property( nonatomic, strong ) UISegmentedControl       *segmentedControl;
 
 @end

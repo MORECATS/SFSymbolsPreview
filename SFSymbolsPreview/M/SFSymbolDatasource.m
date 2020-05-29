@@ -10,15 +10,7 @@
 
 
 static NSString *const kLastOpenedCategoryNameKey = @"LastOpenedCategoryName";
-
-
-@interface SFSymbolDatasource()
-
-@end
-
-@implementation SFSymbolDatasource
-
-+ (SFSymbolCategory *)lastOpenedCategeory
+SFSymbolCategory *lastOpenedCategeory(void)
 {
     NSString *name;
     __block SFSymbolCategory *lastOpenedCategory;
@@ -37,10 +29,30 @@ static NSString *const kLastOpenedCategoryNameKey = @"LastOpenedCategoryName";
     return lastOpenedCategory ? : SFSymbolDatasource.datasource.categories.firstObject;
 }
 
-+ (void)storeUserActivityLastOpenedCategory:(SFSymbolCategory *)category
+void storeUserActivityLastOpenedCategory(SFSymbolCategory *category)
 {
     [NSUserDefaults.standardUserDefaults setObject:category.name forKey:kLastOpenedCategoryNameKey];
 }
+
+
+static NSString *const kNumberOfItemsInColumnKey = @"NumberOfItemsInColumn";
+NSUInteger numberOfItemsInColumn(void)
+{
+    NSUInteger numberOfItems = [NSUserDefaults.standardUserDefaults integerForKey:kNumberOfItemsInColumnKey];
+    return (numberOfItems > 0 && numberOfItems < 5) ? numberOfItems : 4;
+}
+
+void storeUserActivityNumberOfItemsInColumn(NSUInteger numberOfItems)
+{
+    [NSUserDefaults.standardUserDefaults setInteger:numberOfItems forKey:kNumberOfItemsInColumnKey];
+}
+
+
+@interface SFSymbolDatasource()
+
+@end
+
+@implementation SFSymbolDatasource
 
 - (void)loadCategories
 {

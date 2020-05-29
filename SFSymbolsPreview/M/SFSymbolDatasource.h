@@ -9,12 +9,16 @@
 #import "SFSymbolCategory.h"
 
 
+SFSymbolCategory *lastOpenedCategeory(void);
+void storeUserActivityLastOpenedCategory(SFSymbolCategory *category);
+
+NSUInteger numberOfItemsInColumn(void);
+void storeUserActivityNumberOfItemsInColumn(NSUInteger numberOfItems);
+
+
 @interface SFSymbolDatasource : NSObject
 
 @property( nonatomic, strong, readonly ) NSArray<SFSymbolCategory *>        *categories;
-
-+ (SFSymbolCategory *)lastOpenedCategeory;
-+ (void)storeUserActivityLastOpenedCategory:(SFSymbolCategory *)category;
 
 + (instancetype)datasource;
 

@@ -92,10 +92,9 @@
 {
     CGFloat itemWidth;
     
-    if( self.symbolPreviewingStyle == SymbolpreviewingColletionStyle )
+    if( self.numberOfItemInColumn > 1 )
     {
-//        itemWidth = (CGRectGetWidth(collectionView.bounds) - 48) / 2.0f;
-        itemWidth = (CGRectGetWidth(collectionView.bounds) - 16 * 5) / 4.0f;
+        itemWidth = (CGRectGetWidth(collectionView.bounds) - 16 * (self.numberOfItemInColumn + 1)) / self.numberOfItemInColumn;
         return CGSizeMake(itemWidth, itemWidth * .68f + 64);
     }
     else
@@ -107,7 +106,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if( self.symbolPreviewingStyle == SymbolpreviewingColletionStyle )
+    if( self.numberOfItemInColumn > 1 )
     {
         SymbolPreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(SymbolPreviewCell.class)
                                                                             forIndexPath:indexPath];

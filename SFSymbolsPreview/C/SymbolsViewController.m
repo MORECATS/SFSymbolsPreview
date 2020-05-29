@@ -55,7 +55,7 @@
 {
     [super viewDidLoad];
     
-    [self setSymbolPreviewingStyle:SymbolpreviewingColletionStyle];
+    [self setNumberOfItemInColumn:numberOfItemsInColumn()];
     
     [self.view setBackgroundColor:UIColor.systemBackgroundColor];
     [self.navigationController.navigationBar setPrefersLargeTitles:YES];
@@ -95,6 +95,9 @@
         [f registerClass:SymbolPreviewTableCell.class forCellWithReuseIdentifier:NSStringFromClass(SymbolPreviewTableCell.class)];
         (f);
     })];
+    
+    [self.collectionView registerClass:ReusableSegmentedControlView.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                   withReuseIdentifier:NSStringFromClass(ReusableSegmentedControlView.class)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -111,7 +114,7 @@
     if( [self isKindOfClass:SymbolsViewController.class] )
     {
         dispatch_once(&_onceToken, ^{
-            [SFSymbolDatasource storeUserActivityLastOpenedCategory:self.category];
+            storeUserActivityLastOpenedCategory(self.category);
         });
     }
 }
@@ -126,14 +129,32 @@
     return self.category.symbols.count;
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return CGSizeMake(CGRectGetWidth(collectionView.bounds), 64);
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if( kind == UICollectionElementKindSectionHeader )
+    {
+        ReusableSegmentedControlView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                                withReuseIdentifier:NSStringFromClass(ReusableSegmentedControlView.class)
+                                                                                       forIndexPath:indexPath];
+        view.segmentedControl.selectedSegmentIndex = self.numberOfItemInColumn - 1;
+        [view.segmentedControl addTarget:self action:@selector(changeNumberOfItemsInColumn:) forControlEvents:UIControlEventValueChanged];
+        return view;
+    }
+    return nil;
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat itemWidth;
     
-    if( self.symbolPreviewingStyle == SymbolpreviewingColletionStyle )
+    if( self.numberOfItemInColumn > 1 )
     {
-//        itemWidth = (CGRectGetWidth(collectionView.bounds) - 48) / 2.0f;
-        itemWidth = (CGRectGetWidth(collectionView.bounds) - 16 * 5) / 4.0f;
+        itemWidth = (CGRectGetWidth(collectionView.bounds) - 16 * (self.numberOfItemInColumn + 1)) / self.numberOfItemInColumn;
         return CGSizeMake(itemWidth, itemWidth * .68f + 64);
     }
     else
@@ -145,7 +166,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if( self.symbolPreviewingStyle == SymbolpreviewingColletionStyle )
+    if( self.numberOfItemInColumn > 1 )
     {
         SymbolPreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(SymbolPreviewCell.class)
                                                                             forIndexPath:indexPath];
@@ -187,6 +208,16 @@
         activityViewController.popoverPresentationController.sourceRect = activityViewController.popoverPresentationController.sourceView.bounds;
     }
     [self presentViewController:activityViewController animated:YES completion:nil];
+}
+
+- (void)changeNumberOfItemsInColumn:(UISegmentedControl *)segmentedControl
+{
+    [self setNumberOfItemInColumn:segmentedControl.selectedSegmentIndex + 1];
+    [self.collectionView performBatchUpdates:^{
+        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    } completion:nil];
+    
+    storeUserActivityNumberOfItemsInColumn(self.numberOfItemInColumn);
 }
 
 @end

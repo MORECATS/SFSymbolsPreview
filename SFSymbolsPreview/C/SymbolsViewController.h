@@ -20,7 +20,7 @@
 
 @interface SymbolsViewController : UIViewController<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property( nonatomic, assign ) SymbolPreviewingStyle                symbolPreviewingStyle;
+@property( nonatomic, assign ) NSUInteger                           numberOfItemInColumn;
 
 @property( nonatomic, strong ) SFSymbolCategory                     *category;
 

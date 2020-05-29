@@ -10,13 +10,6 @@
 #import "SFSymbol.h"
 
 
-typedef NS_ENUM(NSUInteger, SymbolPreviewingStyle)
-{
-    SymbolpreviewingColletionStyle = 0,
-    SymbolpreviewingTableStyle
-};
-
-
 @interface SymbolPreviewCell : UICollectionViewCell
 
 @property( nonatomic, weak ) SFSymbol               *symbol;

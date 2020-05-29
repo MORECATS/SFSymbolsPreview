@@ -42,7 +42,7 @@
     CategoriesViewController *categoriesViewController = CategoriesViewController.new;
     categoriesViewController.title = NSLocalizedString(@"Categories", nil);
     
-    SymbolsViewController *symbolsViewController = [SymbolsViewController.alloc initWithCategory:SFSymbolDatasource.lastOpenedCategeory];
+    SymbolsViewController *symbolsViewController = [SymbolsViewController.alloc initWithCategory:lastOpenedCategeory()];
     
     if( UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad )
     {

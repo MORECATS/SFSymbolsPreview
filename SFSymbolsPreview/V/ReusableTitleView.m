@@ -42,3 +42,39 @@
 }
 
 @end
+
+
+@interface ReusableSegmentedControlView()
+
+@end
+
+@implementation ReusableSegmentedControlView
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if( [super initWithFrame:frame] )
+    {
+        [self setSegmentedControl:({
+            UISegmentedControl *f = [UISegmentedControl.alloc initWithItems:@[ @"One", @"Two", @"Three", @"Four" ]];
+            [self addSubview:f];
+            [f setTranslatesAutoresizingMaskIntoConstraints:NO];
+            [f.widthAnchor constraintEqualToAnchor:self.widthAnchor constant:-32.0f].active = YES;
+            [f.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
+            [f.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
+            f;
+        })];
+        
+        UILabel *textLabel = UILabel.new;
+        [textLabel setTextColor:UIColor.labelColor];
+        [textLabel setText:NSLocalizedString(@"Number of items in column...", nil)];
+        [textLabel setFont:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium]];
+        [self addSubview:textLabel];
+        [textLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [textLabel.topAnchor constraintEqualToAnchor:self.topAnchor].active = YES;
+        [textLabel.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:16.0f].active = YES;
+        [textLabel.bottomAnchor constraintEqualToAnchor:self.segmentedControl.topAnchor].active = YES;
+    }
+    return self;
+}
+
+@end
