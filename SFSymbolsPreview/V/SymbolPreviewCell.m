@@ -117,10 +117,30 @@
     self.textLabel.text = symbol.name;
 }
 
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    
+    [self.contentView setBackgroundColor:selected ? self.tintColor : UIColor.clearColor];
+    [self.imageView setTintColor:selected ? UIColor.whiteColor : UIColor.labelColor];
+    [self.textLabel setTextColor:selected ? UIColor.whiteColor : UIColor.labelColor];
+}
+
+- (void)setHighlighted:(BOOL)highlighted
+{
+    [super setHighlighted:highlighted];
+    
+    [self.contentView setBackgroundColor:highlighted ? self.tintColor : UIColor.clearColor];
+    [self.imageView setTintColor:highlighted ? UIColor.whiteColor : UIColor.labelColor];
+    [self.textLabel setTextColor:highlighted ? UIColor.whiteColor : UIColor.labelColor];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if( [super initWithFrame:frame] )
     {
+        [self.contentView.layer setCornerRadius:2.0f];
+        
         [self setImageView:({
             UIImageView *f = [UIImageView.alloc initWithImage:[UIImage systemImageNamed:@"paperplane.fill"]];
             [f setContentMode:UIViewContentModeScaleAspectFit];
