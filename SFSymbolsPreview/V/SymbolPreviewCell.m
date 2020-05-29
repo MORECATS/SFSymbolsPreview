@@ -14,7 +14,7 @@
 @property( nonatomic, strong ) UIImageView                      *imageView;
 @property( nonatomic, strong ) UILabel                          *textLabel;
 
-@property( nonatomic, strong ) UIView                           *imageWrapperView;
+@property( nonatomic, strong ) UIView                           *selectedHighlightView;
 
 @end
 
@@ -39,7 +39,7 @@
 {
     [super setSelected:selected];
     
-    [self.imageWrapperView setBackgroundColor:selected ? self.tintColor : UIColor.clearColor];
+    [self.selectedHighlightView setBackgroundColor:selected ? self.tintColor : UIColor.clearColor];
     [self.imageView setTintColor:selected ? UIColor.whiteColor : UIColor.labelColor];
 }
 
@@ -47,7 +47,7 @@
 {
     [super setHighlighted:highlighted];
     
-    [self.imageWrapperView setBackgroundColor:highlighted ? self.tintColor : UIColor.clearColor];
+    [self.selectedHighlightView setBackgroundColor:highlighted ? self.tintColor : UIColor.clearColor];
     [self.imageView setTintColor:highlighted ? UIColor.whiteColor : UIColor.labelColor];
 }
 
@@ -55,7 +55,7 @@
 {
     if( [super initWithFrame:frame] )
     {
-        [self setImageWrapperView:({
+        [self setSelectedHighlightView:({
             UIView *f = UIView.new;
             [f.layer setCornerRadius:4.0f];
             [f.layer setBorderWidth:1.0f];
@@ -73,22 +73,22 @@
             UIImageView *f = [UIImageView.alloc initWithImage:[UIImage systemImageNamed:@"paperplane.fill"]];
             [f setContentMode:UIViewContentModeScaleAspectFit];
             [f setTintColor:UIColor.labelColor];
-            [self.imageWrapperView addSubview:f];
+            [self.selectedHighlightView addSubview:f];
             [f setTranslatesAutoresizingMaskIntoConstraints:NO];
-            [f.heightAnchor constraintEqualToAnchor:self.imageWrapperView.heightAnchor multiplier:.68f].active = YES;
+            [f.heightAnchor constraintEqualToAnchor:self.selectedHighlightView.heightAnchor multiplier:.68f].active = YES;
             [f.widthAnchor constraintEqualToAnchor:f.heightAnchor].active = YES;
-            [f.centerXAnchor constraintEqualToAnchor:self.imageWrapperView.centerXAnchor].active = YES;
-            [f.centerYAnchor constraintEqualToAnchor:self.imageWrapperView.centerYAnchor].active = YES;
+            [f.centerXAnchor constraintEqualToAnchor:self.selectedHighlightView.centerXAnchor].active = YES;
+            [f.centerYAnchor constraintEqualToAnchor:self.selectedHighlightView.centerYAnchor].active = YES;
             f;
         })];
         [self setTextLabel:({
             UILabel *f = UILabel.new;
+            [f setNumberOfLines:2];
             [f setTextAlignment:NSTextAlignmentCenter];
             [f setFont:[UIFont systemFontOfSize:15 weight:UIFontWeightRegular]];
-            [f setNumberOfLines:0];
             [self.contentView addSubview:f];
             [f setTranslatesAutoresizingMaskIntoConstraints:NO];
-            [f.topAnchor constraintEqualToAnchor:self.imageWrapperView.bottomAnchor constant:8.0f].active = YES;
+            [f.topAnchor constraintEqualToAnchor:self.selectedHighlightView.bottomAnchor constant:8.0f].active = YES;
             [f.widthAnchor constraintEqualToAnchor:self.contentView.widthAnchor constant:-8.0f].active = YES;
             [f.centerXAnchor constraintEqualToAnchor:self.imageView.centerXAnchor].active = YES;
             f;
@@ -114,7 +114,14 @@
     _symbol = symbol;
     
     self.imageView.image = symbol.image;
-    self.textLabel.text = symbol.name;
+    if( symbol.attributedName )
+    {
+        self.textLabel.attributedText = symbol.attributedName;
+    }
+    else
+    {
+        self.textLabel.text = symbol.name;
+    }
 }
 
 - (void)setSelected:(BOOL)selected

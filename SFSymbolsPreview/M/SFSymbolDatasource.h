@@ -8,6 +8,7 @@
 
 #import "SFSymbolCategory.h"
 
+BOOL IS_IPAD(void);
 
 SFSymbolCategory *lastOpenedCategeory(void);
 void storeUserActivityLastOpenedCategory(SFSymbolCategory *category);

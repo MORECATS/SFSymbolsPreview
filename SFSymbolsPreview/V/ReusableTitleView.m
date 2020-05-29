@@ -67,7 +67,7 @@
         UILabel *textLabel = UILabel.new;
         [textLabel setTextColor:UIColor.labelColor];
         [textLabel setText:NSLocalizedString(@"Number of items in column...", nil)];
-        [textLabel setFont:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium]];
+        [textLabel setFont:[UIFont systemFontOfSize:15 weight:UIFontWeightRegular]];
         [self addSubview:textLabel];
         [textLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         [textLabel.topAnchor constraintEqualToAnchor:self.topAnchor].active = YES;

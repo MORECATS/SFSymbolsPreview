@@ -8,6 +8,10 @@
 
 #import "SFSymbolDatasource.h"
 
+BOOL IS_IPAD(void)
+{
+    return UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad;
+}
 
 static NSString *const kLastOpenedCategoryNameKey = @"LastOpenedCategoryName";
 SFSymbolCategory *lastOpenedCategeory(void)

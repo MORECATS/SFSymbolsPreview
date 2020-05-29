@@ -165,7 +165,7 @@
     if( self.numberOfItemInColumn > 1 )
     {
         itemWidth = (CGRectGetWidth(collectionView.bounds) - 16 * (self.numberOfItemInColumn + 1)) / self.numberOfItemInColumn;
-        return CGSizeMake(itemWidth - 1, itemWidth * .68f + 64);
+        return CGSizeMake(itemWidth - 1, itemWidth * .68f + 44);
     }
     else
     {

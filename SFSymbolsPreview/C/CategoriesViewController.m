@@ -17,6 +17,26 @@
 
 @implementation CategoryCell
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+    
+    [self.textLabel setTextColor:selected ? UIColor.whiteColor : UIColor.labelColor];
+    [self.detailTextLabel setTextColor:selected ? UIColor.whiteColor : UIColor.secondaryLabelColor];
+    [self.accessoryView setTintColor:self.detailTextLabel.textColor];
+    [self.imageView setTintColor:self.textLabel.textColor];
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+{
+    [super setHighlighted:highlighted animated:animated];
+    
+    [self.textLabel setTextColor:highlighted ? UIColor.whiteColor : UIColor.labelColor];
+    [self.detailTextLabel setTextColor:highlighted ? UIColor.whiteColor : UIColor.secondaryLabelColor];
+    [self.accessoryView setTintColor:self.detailTextLabel.textColor];
+    [self.imageView setTintColor:self.textLabel.textColor];
+}
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     return [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
@@ -60,6 +80,8 @@
         [f registerClass:CategoryCell.class forCellReuseIdentifier:NSStringFromClass(CategoryCell.class)];
         f;
     })];
+    
+    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -67,6 +89,13 @@
     [super viewWillAppear:animated];
     
     [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+//    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -87,6 +116,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(CategoryCell.class)];
+    
+    cell.selectedBackgroundView = UIView.new;
+    cell.selectedBackgroundView.backgroundColor = self.view.tintColor;
     
     SFSymbolCategory *category = [self categoryForIndexPath:indexPath];
     

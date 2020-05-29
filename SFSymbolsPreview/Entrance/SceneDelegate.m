@@ -44,7 +44,7 @@
     
     SymbolsViewController *symbolsViewController = [SymbolsViewController.alloc initWithCategory:lastOpenedCategeory()];
     
-    if( UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad )
+    if( IS_IPAD() )
     {
         UINavigationController *masterViewController = [UINavigationController.alloc initWithRootViewController:categoriesViewController];
         UINavigationController *detailViewController = [UINavigationController.alloc initWithRootViewController:symbolsViewController];
