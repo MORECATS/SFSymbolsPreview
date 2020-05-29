@@ -62,6 +62,7 @@
     
     [self.navigationItem setSearchController:({
         SymbolSearchResultsViewController *searchResultsVC = [SymbolSearchResultsViewController.alloc initWithCategory:self.category];
+        searchResultsVC.navigationC = self.navigationController;
         UISearchController *searchController = [UISearchController.alloc initWithSearchResultsController:searchResultsVC];
         searchController.searchResultsUpdater = searchResultsVC;
         searchController.searchBar.placeholder = NSLocalizedString(@"Search", nil);

@@ -7,11 +7,12 @@
 //
 
 #import "SymbolSearchResultsViewController.h"
+#import "ReusableTitleView.h"
 
 
 @interface SymbolSearchResultsViewController()
 
-@property( nonatomic, strong ) SFSymbolCategory         *searchResults;
+@property( nonatomic, strong ) SFSymbolCategory         *searchResult;
 
 @end
 
@@ -34,7 +35,7 @@
                 }].mutableCopy;
                 [attributedName setAttributes:@{
                     NSForegroundColorAttributeName: tintColor,
-                    NSFontAttributeName: [UIFont systemFontOfSize:15 weight:UIFontWeightRegular]
+                    NSFontAttributeName: [UIFont systemFontOfSize:15 weight:UIFontWeightMedium]
                 } range:range];
                 
                 [searchResults addObject:[SFSymbol symbolWithAttributedName:attributedName]];
@@ -42,7 +43,7 @@
         }];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self setSearchResults:[SFSymbolCategory.alloc initWithSearchResultsCategoryWithSymbols:searchResults]];
+            [self setSearchResult:[SFSymbolCategory.alloc initWithSearchResultsCategoryWithSymbols:searchResults]];
             [self.collectionView reloadData];
         });
     });
@@ -54,6 +55,9 @@
 
     [self.view setBackgroundColor:UIColor.secondarySystemBackgroundColor];
     [self.collectionView setKeyboardDismissMode:UIScrollViewKeyboardDismissModeOnDrag];
+    [self.collectionView registerClass:ReusableTitleView.class
+            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                   withReuseIdentifier:NSStringFromClass(ReusableTitleView.class)];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -63,7 +67,25 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.searchResults.symbols.count;
+    return self.searchResult.symbols.count;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return CGSizeMake(CGRectGetWidth(collectionView.bounds), 36);
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if( kind == UICollectionElementKindSectionHeader )
+    {
+        ReusableTitleView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                     withReuseIdentifier:NSStringFromClass(ReusableTitleView.class)
+                                                                            forIndexPath:indexPath];
+        view.title = [NSString stringWithFormat:@"%@: %ld", NSLocalizedString(@"RESULTS", nil), self.searchResult.symbols.count];
+        return view;
+    }
+    return nil;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -89,21 +111,23 @@
     {
         SymbolPreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(SymbolPreviewCell.class)
                                                                             forIndexPath:indexPath];
-        [cell setSymbol:self.searchResults.symbols[indexPath.item]];
+        [cell setSymbol:self.searchResult.symbols[indexPath.item]];
         return cell;
     }
     else
     {
         SymbolPreviewTableCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(SymbolPreviewTableCell.class)
                                                                                  forIndexPath:indexPath];
-        [cell setSymbol:self.searchResults.symbols[indexPath.item]];
+        [cell setSymbol:self.searchResult.symbols[indexPath.item]];
         return cell;
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *imageNamed = self.searchResults.symbols[indexPath.item].name;
+//    return [self.navigationC pushViewController:UIViewController.new animated:YES];
+    
+    NSString *imageNamed = self.searchResult.symbols[indexPath.item].name;
     
     UIImage *image;
     {
