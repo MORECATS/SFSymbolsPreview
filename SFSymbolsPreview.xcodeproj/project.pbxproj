@@ -44,7 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7E0C9542247E65890029F521 /* SFSymbolsPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFSymbolsPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E0C9542247E65890029F521 /* SF Symbols.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SF Symbols.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E0C9545247E65890029F521 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7E0C9546247E65890029F521 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7E0C9548247E65890029F521 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		7E0C9543247E65890029F521 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7E0C9542247E65890029F521 /* SFSymbolsPreview.app */,
+				7E0C9542247E65890029F521 /* SF Symbols.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -230,7 +230,7 @@
 			);
 			name = SFSymbolsPreview;
 			productName = SFSymbolsPreview;
-			productReference = 7E0C9542247E65890029F521 /* SFSymbolsPreview.app */;
+			productReference = 7E0C9542247E65890029F521 /* SF Symbols.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -452,8 +452,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.morecats.testing.SFSymbolsPreview;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.morecats.SFSymbolsPreview;
+				PRODUCT_NAME = "SF Symbols";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -469,8 +469,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.morecats.testing.SFSymbolsPreview;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.morecats.SFSymbolsPreview;
+				PRODUCT_NAME = "SF Symbols";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

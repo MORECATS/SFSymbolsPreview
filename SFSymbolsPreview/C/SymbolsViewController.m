@@ -161,7 +161,7 @@
     if( self.numberOfItemInColumn > 1 )
     {
         itemWidth = (CGRectGetWidth(collectionView.bounds) - 16 * (self.numberOfItemInColumn + 1)) / self.numberOfItemInColumn;
-        return CGSizeMake(itemWidth, itemWidth * .68f + 64);
+        return CGSizeMake(itemWidth - 1, itemWidth * .68f + 64);
     }
     else
     {
@@ -275,16 +275,21 @@
 
 - (void)updatePreferredImageSymbolWeight:(UIImageSymbolWeight)weight
 {
-    storeUserActivityPreferredImageSymbolWeight(weight);
-    [self.collectionView performBatchUpdates:^{
-        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
-    } completion:nil];
+    if( weight != preferredImageSymbolWeight() )
+    {
+        storeUserActivityPreferredImageSymbolWeight(weight);
+        
+        [self.collectionView performBatchUpdates:^{
+            [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        } completion:nil];
+    }
     [self updateRightBarButtonItemTitle];
 }
 
 - (void)changeNumberOfItemsInColumn:(UISegmentedControl *)segmentedControl
 {
     [self setNumberOfItemInColumn:segmentedControl.selectedSegmentIndex + 1];
+    
     [self.collectionView performBatchUpdates:^{
         [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
     } completion:nil];
