@@ -49,6 +49,7 @@
         UITableView *f = [UITableView.alloc initWithFrame:CGRectZero style:UITableViewStylePlain];
         [self setImageView:UIImageView.new];
         [self.imageView setContentMode:UIViewContentModeScaleAspectFit];
+        [self.imageView setTintColor:UIColor.labelColor];
         [f setTableHeaderView:self.imageView];
         [f setDelegate:self];
         [f setDataSource:self];
@@ -185,7 +186,7 @@
         (image = UIGraphicsGetImageFromCurrentImageContext());
         UIGraphicsEndImageContext();
     }
-    self.imageView.image = image;
+    self.imageView.image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 }
 
 - (void)updateRightBarButtonItemTitle
