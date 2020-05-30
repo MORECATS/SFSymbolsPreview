@@ -16,6 +16,7 @@ void storeUserActivityLastOpenedCategory(SFSymbolCategory *category);
 NSUInteger numberOfItemsInColumn(void);
 void storeUserActivityNumberOfItemsInColumn(NSUInteger numberOfItems);
 
+FOUNDATION_EXTERN NSNotificationName const PreferredSymbolWeightDidChangeNotification;
 UIImageSymbolWeight preferredImageSymbolWeight(void);
 void storeUserActivityPreferredImageSymbolWeight(UIImageSymbolWeight weight);
 

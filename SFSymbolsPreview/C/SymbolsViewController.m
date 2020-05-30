@@ -91,6 +91,11 @@
     
     [self.collectionView registerClass:ReusableSegmentedControlView.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                    withReuseIdentifier:NSStringFromClass(ReusableSegmentedControlView.class)];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(notifyPreferredSymbolWeightDidChange:)
+                                               name:PreferredSymbolWeightDidChangeNotification
+                                             object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -227,6 +232,11 @@
     [self presentViewController:alertC animated:YES completion:nil];
 }
 
+- (void)notifyPreferredSymbolWeightDidChange:(NSNotification *)notification
+{
+    [self updatePreferredImageSymbolWeight:preferredImageSymbolWeight()];
+}
+
 - (void)updateRightBarButtonItemTitle
 {
     switch( preferredImageSymbolWeight() )
@@ -246,14 +256,11 @@
 
 - (void)updatePreferredImageSymbolWeight:(UIImageSymbolWeight)weight
 {
-    if( weight != preferredImageSymbolWeight() )
-    {
-        storeUserActivityPreferredImageSymbolWeight(weight);
-        
-        [self.collectionView performBatchUpdates:^{
-            [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
-        } completion:nil];
-    }
+    storeUserActivityPreferredImageSymbolWeight(weight);
+    
+    [self.collectionView performBatchUpdates:^{
+        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    } completion:nil];
     [self updateRightBarButtonItemTitle];
 }
 

@@ -51,6 +51,7 @@ void storeUserActivityNumberOfItemsInColumn(NSUInteger numberOfItems)
     [NSUserDefaults.standardUserDefaults setInteger:numberOfItems forKey:kNumberOfItemsInColumnKey];
 }
 
+NSNotificationName const PreferredSymbolWeightDidChangeNotification = @"PreferredSymbolWeightDidChangeNotification";
 static NSString *const kPreferredImageSymbolWeightKey = @"PreferredImageSymbolWeight";
 UIImageSymbolWeight preferredImageSymbolWeight(void)
 {
