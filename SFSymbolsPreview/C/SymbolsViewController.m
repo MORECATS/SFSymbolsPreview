@@ -8,10 +8,7 @@
 
 #import "SymbolSearchResultsViewController.h"
 #import "SymbolsViewController.h"
-
 #import "ReusableTitleView.h"
-#import "TextCell.h"
-
 #import "SFSymbolDatasource.h"
 
 
