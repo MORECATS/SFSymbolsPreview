@@ -15,23 +15,6 @@
 #import "SFSymbolDatasource.h"
 
 
-@implementation UIImage( SharingImageExtension )
-
-- (UIImage *)toSize:(CGSize)size
-{
-    UIImage *image = nil;
-    {
-        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
-        [self drawInRect:CGRectMake(0, 0, size.width, size.height)];
-        (image = UIGraphicsGetImageFromCurrentImageContext());
-        UIGraphicsEndImageContext();
-    }
-    return image;
-}
-
-@end
-
-
 @interface SymbolsViewController()
 {
     dispatch_once_t _onceToken;
@@ -51,6 +34,11 @@
     return self;
 }
 
+- (NSArray<SFSymbol *> *)symbolsForDisplay
+{
+    return self.category.symbols;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -62,7 +50,7 @@
     
     [self.navigationItem setSearchController:({
         SymbolSearchResultsViewController *searchResultsVC = [SymbolSearchResultsViewController.alloc initWithCategory:self.category];
-        searchResultsVC.navigationC = self.navigationController;
+        searchResultsVC.searchResultDisplayingNavigationController = self.navigationController;
         UISearchController *searchController = [UISearchController.alloc initWithSearchResultsController:searchResultsVC];
         searchController.searchResultsUpdater = searchResultsVC;
         searchController.searchBar.placeholder = NSLocalizedString(@"Search", nil);
@@ -76,6 +64,9 @@
                                                                              action:@selector(changePreferredImageSymbolWeight)]];
     [self updateRightBarButtonItemTitle];
     
+    [self.navigationItem setLeftBarButtonItem:self.splitViewController.displayModeButtonItem];
+    [self.navigationItem setLeftItemsSupplementBackButton:YES];
+        
     [self setCollectionView:({
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout.alloc init];
         [layout setMinimumInteritemSpacing:16];
@@ -109,14 +100,14 @@
 {
     [super viewWillAppear:animated];
     
-    [self.collectionView deselectItemAtIndexPath:self.collectionView.indexPathsForVisibleItems.firstObject animated:YES];
+    [self.collectionView deselectItemAtIndexPath:self.collectionView.indexPathsForSelectedItems.firstObject animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    if( [self isKindOfClass:SymbolsViewController.class] )
+    if( [self isMemberOfClass:SymbolsViewController.class] )
     {
         dispatch_once(&_onceToken, ^{
             storeUserActivityLastOpenedCategory(self.category);
@@ -131,7 +122,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.category.symbols.count;
+    return self.symbolsForDisplay.count;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
@@ -164,7 +155,8 @@
     
     if( self.numberOfItemInColumn > 1 )
     {
-        itemWidth = (CGRectGetWidth(collectionView.bounds) - 16 * (self.numberOfItemInColumn + 1)) / self.numberOfItemInColumn;
+        NSUInteger column = IS_IPAD() ? self.numberOfItemInColumn * 2 : self.numberOfItemInColumn;
+        itemWidth = (CGRectGetWidth(collectionView.bounds) - 16 * (column + 1)) / column;
         return CGSizeMake(itemWidth - 1, itemWidth * .68f + 44);
     }
     else
@@ -180,44 +172,22 @@
     {
         SymbolPreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(SymbolPreviewCell.class)
                                                                             forIndexPath:indexPath];
-        [cell setSymbol:self.category.symbols[indexPath.row]];
+        [cell setSymbol:self.symbolsForDisplay[indexPath.row]];
         return cell;
     }
     else
     {
         SymbolPreviewTableCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(SymbolPreviewTableCell.class)
                                                                                  forIndexPath:indexPath];
-        [cell setSymbol:self.category.symbols[indexPath.row]];
+        [cell setSymbol:self.symbolsForDisplay[indexPath.row]];
         return cell;
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *imageNamed = self.category.symbols[indexPath.item].name;
-    
-    UIImage *image;
-    {
-        CGRect imageRect = CGRectMake(0, 0, 512, 512);
-        CGFloat scale = 3.0f;
-        
-        image = [UIImage systemImageNamed:imageNamed];
-        image = [image toSize:CGSizeMake(imageRect.size.width, imageRect.size.width * image.size.height / image.size.width)];
-        
-        UIGraphicsBeginImageContextWithOptions(imageRect.size, NO, scale);
-        [image drawAtPoint:CGPointMake(CGRectGetMidX(imageRect) - image.size.width / 2.0f, CGRectGetMidY(imageRect) - image.size.height / 2.0f)];
-        (image = UIGraphicsGetImageFromCurrentImageContext());
-        UIGraphicsEndImageContext();
-    }
-    
-    UIActivityViewController *activityViewController = [UIActivityViewController.alloc initWithActivityItems:@[ imageNamed, image ]
-                                                                                       applicationActivities:nil];
-    if( UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad )
-    {
-        activityViewController.popoverPresentationController.sourceView = [collectionView cellForItemAtIndexPath:indexPath];
-        activityViewController.popoverPresentationController.sourceRect = activityViewController.popoverPresentationController.sourceView.bounds;
-    }
-    [self presentViewController:activityViewController animated:YES completion:nil];
+{    
+    [self.navigationController pushViewController:[SymbolDetailsViewController.alloc initWithSymbol:self.symbolsForDisplay[indexPath.item]]
+                                         animated:YES];
 }
 
 - (void)changePreferredImageSymbolWeight

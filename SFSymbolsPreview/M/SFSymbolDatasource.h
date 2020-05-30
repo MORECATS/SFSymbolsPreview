@@ -27,3 +27,10 @@ void storeUserActivityPreferredImageSymbolWeight(UIImageSymbolWeight weight);
 + (instancetype)datasource;
 
 @end
+
+
+@interface UIImage( SharingImageExtension )
+
+- (UIImage *)toSize:(CGSize)size;
+
+@end

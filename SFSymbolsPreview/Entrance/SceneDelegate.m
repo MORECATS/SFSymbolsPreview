@@ -44,25 +44,14 @@
     
     SymbolsViewController *symbolsViewController = [SymbolsViewController.alloc initWithCategory:lastOpenedCategeory()];
     
-    if( IS_IPAD() )
-    {
-        UINavigationController *masterViewController = [UINavigationController.alloc initWithRootViewController:categoriesViewController];
-        UINavigationController *detailViewController = [UINavigationController.alloc initWithRootViewController:symbolsViewController];
-        
-        [self.window setRootViewController:({
-            UISplitViewController *splitViewController = UISplitViewController.new;
-            splitViewController.viewControllers = @[ masterViewController, detailViewController ];
-            splitViewController;
-        })];
-    }
-    else
-    {
-        [self.window setRootViewController:({
-            UINavigationController *navigationC = [UINavigationController.alloc initWithRootViewController:categoriesViewController];
-            [navigationC pushViewController:symbolsViewController animated:NO];
-            (navigationC);
-        })];
-    }
+    UINavigationController *masterViewController = [UINavigationController.alloc initWithRootViewController:categoriesViewController];
+    UINavigationController *detailViewController = [UINavigationController.alloc initWithRootViewController:symbolsViewController];
+    
+    [self.window setRootViewController:({
+        UISplitViewController *splitViewController = UISplitViewController.new;
+        splitViewController.viewControllers = @[ masterViewController, detailViewController ];
+        splitViewController;
+    })];
     [self.window makeKeyAndVisible];
 }
 

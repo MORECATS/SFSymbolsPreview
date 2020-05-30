@@ -9,13 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SFSymbolCategory.h"
 #import "SymbolPreviewCell.h"
-
-
-@interface UIImage( SharingImageExtension )
-
-- (UIImage *)toSize:(CGSize)size;
-
-@end
+#import "SymbolDetailsViewController.h"
 
 
 @interface SymbolsViewController : UIViewController<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -23,6 +17,7 @@
 @property( nonatomic, assign ) NSUInteger                           numberOfItemInColumn;
 
 @property( nonatomic, strong ) SFSymbolCategory                     *category;
+@property( nonatomic, weak   ) NSArray<SFSymbol *>                  *symbolsForDisplay;
 
 @property( nonatomic, strong ) UICollectionView                     *collectionView;
 

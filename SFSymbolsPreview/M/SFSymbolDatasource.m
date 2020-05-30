@@ -112,3 +112,20 @@ void storeUserActivityPreferredImageSymbolWeight(UIImageSymbolWeight weight)
 }
 
 @end
+
+
+@implementation UIImage( SharingImageExtension )
+
+- (UIImage *)toSize:(CGSize)size
+{
+    UIImage *image = nil;
+    {
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+        [self drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        (image = UIGraphicsGetImageFromCurrentImageContext());
+        UIGraphicsEndImageContext();
+    }
+    return image;
+}
+
+@end

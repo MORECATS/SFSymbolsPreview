@@ -7,6 +7,7 @@
 //
 
 #import "SymbolSearchResultsViewController.h"
+#import "SymbolDetailsViewController.h"
 #import "ReusableTitleView.h"
 
 
@@ -49,6 +50,11 @@
     });
 }
 
+- (NSArray<SFSymbol *> *)symbolsForDisplay
+{
+    return self.searchResult.symbols;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -82,74 +88,16 @@
         ReusableTitleView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind
                                                                      withReuseIdentifier:NSStringFromClass(ReusableTitleView.class)
                                                                             forIndexPath:indexPath];
-        view.title = [NSString stringWithFormat:@"%@: %ld", NSLocalizedString(@"RESULTS", nil), self.searchResult.symbols.count];
+        view.title = [NSString stringWithFormat:@"%@: %ld", NSLocalizedString(@"RESULTS", nil), self.symbolsForDisplay.count];
         return view;
     }
     return nil;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    CGFloat itemWidth;
-    
-    if( self.numberOfItemInColumn > 1 )
-    {
-        itemWidth = (CGRectGetWidth(collectionView.bounds) - 16 * (self.numberOfItemInColumn + 1)) / self.numberOfItemInColumn;
-        return CGSizeMake(itemWidth, itemWidth * .68f + 64);
-    }
-    else
-    {
-        itemWidth = CGRectGetWidth(collectionView.bounds) - 32.0f;
-        return CGSizeMake(itemWidth, 48);
-    }
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    if( self.numberOfItemInColumn > 1 )
-    {
-        SymbolPreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(SymbolPreviewCell.class)
-                                                                            forIndexPath:indexPath];
-        [cell setSymbol:self.searchResult.symbols[indexPath.item]];
-        return cell;
-    }
-    else
-    {
-        SymbolPreviewTableCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(SymbolPreviewTableCell.class)
-                                                                                 forIndexPath:indexPath];
-        [cell setSymbol:self.searchResult.symbols[indexPath.item]];
-        return cell;
-    }
-}
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    return [self.navigationC pushViewController:UIViewController.new animated:YES];
-    
-    NSString *imageNamed = self.searchResult.symbols[indexPath.item].name;
-    
-    UIImage *image;
-    {
-        CGRect imageRect = CGRectMake(0, 0, 512, 512);
-        CGFloat scale = 3.0f;
-        
-        image = [UIImage systemImageNamed:imageNamed];
-        image = [image toSize:CGSizeMake(imageRect.size.width, imageRect.size.width * image.size.height / image.size.width)];
-        
-        UIGraphicsBeginImageContextWithOptions(imageRect.size, NO, scale);
-        [image drawAtPoint:CGPointMake(CGRectGetMidX(imageRect) - image.size.width / 2.0f, CGRectGetMidY(imageRect) - image.size.height / 2.0f)];
-        (image = UIGraphicsGetImageFromCurrentImageContext());
-        UIGraphicsEndImageContext();
-    }
-    
-    UIActivityViewController *activityViewController = [UIActivityViewController.alloc initWithActivityItems:@[ imageNamed, image ]
-                                                                                       applicationActivities:nil];
-    if( UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad )
-    {
-        activityViewController.popoverPresentationController.sourceView = [collectionView cellForItemAtIndexPath:indexPath];
-        activityViewController.popoverPresentationController.sourceRect = activityViewController.popoverPresentationController.sourceView.bounds;
-    }
-    [self presentViewController:activityViewController animated:YES completion:nil];
+    SymbolDetailsViewController *detailViewController = [SymbolDetailsViewController.alloc initWithSymbol:self.symbolsForDisplay[indexPath.item]];
+    [self.searchResultDisplayingNavigationController pushViewController:detailViewController animated:YES];
 }
 
 @end

@@ -41,6 +41,7 @@
 		7EE40736247FB0FF00A68520 /* SFSymbol.Arrows.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40735247FB0FF00A68520 /* SFSymbol.Arrows.plist */; };
 		7EE40738247FBC7800A68520 /* SFSymbol.Math.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40737247FBC7800A68520 /* SFSymbol.Math.plist */; };
 		7EE4073A247FBE7200A68520 /* SFSymbol.Indices.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE40739247FBE7200A68520 /* SFSymbol.Indices.plist */; };
+		7EF172792481EC8D00A45B3F /* SymbolDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF172782481EC8D00A45B3F /* SymbolDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,8 @@
 		7EE40735247FB0FF00A68520 /* SFSymbol.Arrows.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Arrows.plist; sourceTree = "<group>"; };
 		7EE40737247FBC7800A68520 /* SFSymbol.Math.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Math.plist; sourceTree = "<group>"; };
 		7EE40739247FBE7200A68520 /* SFSymbol.Indices.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SFSymbol.Indices.plist; sourceTree = "<group>"; };
+		7EF172772481EC8D00A45B3F /* SymbolDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SymbolDetailsViewController.h; sourceTree = "<group>"; };
+		7EF172782481EC8D00A45B3F /* SymbolDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SymbolDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +146,8 @@
 				7E0C957C247F588E0029F521 /* CategoriesViewController.m */,
 				7E0C955E247E65F50029F521 /* SymbolsViewController.h */,
 				7E0C955F247E65F50029F521 /* SymbolsViewController.m */,
+				7EF172772481EC8D00A45B3F /* SymbolDetailsViewController.h */,
+				7EF172782481EC8D00A45B3F /* SymbolDetailsViewController.m */,
 				7E0C9561247E6B520029F521 /* SymbolSearchResultsViewController.h */,
 				7E0C9562247E6B520029F521 /* SymbolSearchResultsViewController.m */,
 			);
@@ -311,6 +316,7 @@
 				7E0C9560247E65F50029F521 /* SymbolsViewController.m in Sources */,
 				7E0C954A247E65890029F521 /* SceneDelegate.m in Sources */,
 				7E0C956F247E71570029F521 /* ReusableTitleView.m in Sources */,
+				7EF172792481EC8D00A45B3F /* SymbolDetailsViewController.m in Sources */,
 				7E0C9563247E6B520029F521 /* SymbolSearchResultsViewController.m in Sources */,
 				7E0C957D247F588E0029F521 /* CategoriesViewController.m in Sources */,
 				7E0C9572247F43180029F521 /* SFSymbol.m in Sources */,

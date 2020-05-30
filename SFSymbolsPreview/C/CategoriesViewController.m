@@ -91,13 +91,6 @@
     [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-//    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -134,8 +127,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [self.splitViewController showDetailViewController:[SymbolsViewController.alloc initWithCategory:[self categoryForIndexPath:indexPath]] sender:self];
-    [self.navigationController pushViewController:[SymbolsViewController.alloc initWithCategory:[self categoryForIndexPath:indexPath]] animated:YES];
+    SymbolsViewController *symbolVC = [SymbolsViewController.alloc initWithCategory:[self categoryForIndexPath:indexPath]];
+    UINavigationController *navigationC = [UINavigationController.alloc initWithRootViewController:symbolVC];
+    [self.splitViewController showDetailViewController:navigationC sender:self];
 }
 
 @end

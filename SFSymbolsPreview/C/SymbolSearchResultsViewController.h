@@ -11,6 +11,6 @@
 
 @interface SymbolSearchResultsViewController : SymbolsViewController<UISearchResultsUpdating>
 
-@property( nonatomic, weak ) UINavigationController             *navigationC;
+@property( nonatomic, weak ) UINavigationController                 *searchResultDisplayingNavigationController;
 
 @end

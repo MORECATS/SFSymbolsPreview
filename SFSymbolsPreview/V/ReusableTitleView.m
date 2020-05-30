@@ -6,6 +6,7 @@
 //  Copyright © 2020 YICAI YANG. All rights reserved.
 //
 
+#import "SFSymbolDatasource.h"
 #import "ReusableTitleView.h"
 
 
@@ -55,7 +56,8 @@
     if( [super initWithFrame:frame] )
     {
         [self setSegmentedControl:({
-            UISegmentedControl *f = [UISegmentedControl.alloc initWithItems:@[ @"One", @"Two", @"Three", @"Four" ]];
+            NSArray<NSString *> *items = IS_IPAD() ? @[ @"One", @"Four", @"Six", @"Eight" ] : @[ @"One", @"Two", @"Three", @"Four" ];
+            UISegmentedControl *f = [UISegmentedControl.alloc initWithItems:items];
             [self addSubview:f];
             [f setTranslatesAutoresizingMaskIntoConstraints:NO];
             [f.widthAnchor constraintEqualToAnchor:self.widthAnchor constant:-32.0f].active = YES;
